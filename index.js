@@ -3,7 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 app.use(express.json());
@@ -25,9 +26,8 @@ mongoose.connect(URI, {
     console.log('Connected to MongoDB')
 });
 
-app.get('/', (req, res) => {
-    res.json({msg: 'Welcome!'})
-})
+// Routes
+app.use('/user', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
