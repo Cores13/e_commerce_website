@@ -86,6 +86,8 @@ const refreshToken = (req, res) => {
             return res.status(400).json({msg: 'Please Login or Register'});
         }
 
+        //test
+
         jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (error, user) => {
             if(error) {
                 return res.status(400).json({msg: 'Please Login or Register'});
