@@ -1,4 +1,4 @@
-# e_commerce_website
+# eCommerce Website
 ## Made using
 NodeJS, React, MongoDB
 
