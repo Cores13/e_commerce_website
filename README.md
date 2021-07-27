@@ -1,4 +1,5 @@
 # e_commerce_website
+## Made using
 NodeJS, React, MongoDB eCommerce Website
 
 # Frontend 
@@ -23,3 +24,11 @@ React with TypeScript
 react-router-dom 
 axios 
 react-paypal-express-checkout
+
+## Start backend Server
+`npm install`
+`npm run dev`
+
+## Start frontend Server
+`yarn install`
+`yarn start`
