@@ -34,10 +34,38 @@ const register = async (req, res) => {
             });
 
             res.json({accesstoken});
-            // res.json({msg: 'Register successful!'});
         }catch (error) {
             return res.status(500).json({msg: error.message});
         }
+}
+
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        const user = await Users.findOne({email});
+        // Validate email and password
+        if(!user){
+            return res.status(400).json({msg: 'User does not exist.'});
+        }
+        const isMatch = await bcrypt.compare(password, user.password)
+        if(!isMatch){
+            return res.status(400).json({msg: 'Incorrect password.'});
+        }
+
+        // If login success, create access token and refresh token
+        const accesstoken = createAccessToken({id: user._id});
+        const refreshtoken = createRefreshToken({id: user._id});
+
+        res.cookie('refreshtoken', refreshtoken, {
+            httpOnly: true,
+            path: '/user/refresh_token'
+        });
+        
+        res.json({accesstoken});
+    } catch (error) {
+        res.status(500).json({msg: error.message});
+    }
 }
 
 const refreshToken = (req, res) => {
@@ -73,5 +101,6 @@ const createRefreshToken = (user) => {
 
 module.exports = {
     register,
+    login,
     refreshToken
 };
