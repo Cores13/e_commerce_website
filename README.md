@@ -2,7 +2,7 @@
 # Backend 
 NodeJS and MongoDB
 
-# Backend Modules
+## Backend Modules
 * bcrypt 
 * cloudinary 
 * cookie-parser 
@@ -17,17 +17,18 @@ NodeJS and MongoDB
 # Frontend
 React with TypeScript
 
-# Frontend Modules
+## Frontend Modules
 * react-router-dom 
 * axios 
 * react-paypal-express-checkout
 
-## Start backend Server
+# Getting started
+## Start backend server
 `npm install`
 
 `npm run dev`
 
-## Start frontend Server
+## Start frontend server
 `yarn install`
 
 `yarn start`
@@ -36,6 +37,13 @@ React with TypeScript
 ```
 MONGODB_URL = 
 PORT = 
+
+<!-- JSON Web Token -->
 ACCESS_TOKEN_SECRET = 
 REFRESH_TOKEN_SECRET =
+
+<!-- Cloudinary -->
+CLOUD_NAME = 
+CLOUD_API_KEY = 
+CLOUD_API_SECRET =
 ```
