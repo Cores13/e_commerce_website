@@ -4,6 +4,7 @@ const auth = require('../middleware/auth');
 const authAdmin = require('../middleware/authAdmin');
 const fs = require('fs');
 
+
 // Upload image on Cloudinary
 // Cloudinary configuration
 cloudinary.config({
@@ -12,8 +13,9 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET
 });
 
-// Image upload route
-router.post('/upload', (req, res) => {
+
+// Upload image
+router.post('/upload', auth, authAdmin, (req, res) => {
     try {
         console.log(req.files);
         if(!req.files || Object.keys(req.files).length === 0){
@@ -41,6 +43,25 @@ router.post('/upload', (req, res) => {
         res.status(500).json({msg: error.message});
     }
 });
+
+// Delete image
+router.post('/destroy', auth, authAdmin, (req, res) => {
+    try {
+        const {public_id} = req.body;
+        if(!public_id) {
+            return res.status(400).json({msg: 'No image selected.'})
+        }
+
+        cloudinary.v2.uploader.destroy(public_id, async(error, result) => {
+            if(error) throw error;
+
+            res.json({msg: 'Image deleted successfully.'})
+        })
+    } catch (error) {
+        res.status(500).json({msg: error.message});
+    }
+})
+
 
 const removeTmp = (path) => {
     fs.unlink(path, error => {
