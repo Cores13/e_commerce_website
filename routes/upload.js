@@ -49,6 +49,7 @@ router.post('/destroy', auth, authAdmin, (req, res) => {
     try {
         const {public_id} = req.body;
         if(!public_id) {
+            removeTmp(file.tempFilePath);
             return res.status(400).json({msg: 'No image selected.'})
         }
 
@@ -56,11 +57,12 @@ router.post('/destroy', auth, authAdmin, (req, res) => {
             if(error) throw error;
 
             res.json({msg: 'Image deleted successfully.'})
+            // removeTmp(file.tempFilePath);
         })
     } catch (error) {
         res.status(500).json({msg: error.message});
     }
-})
+});
 
 
 const removeTmp = (path) => {
