@@ -1,7 +1,4 @@
 # eCommerce Website
-## Made using
-NodeJS, React, MongoDB
-
 # Backend 
 NodeJS
 
