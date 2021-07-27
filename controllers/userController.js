@@ -2,6 +2,7 @@ const Users = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
 const register = async (req, res) => {
         try {
             const {name, email, password} = req.body;
@@ -68,7 +69,6 @@ const login = async (req, res) => {
     }
 }
 
-
 const logout = async (req, res) => {
     try {
         res.clearCookie('refreshtoken', {path: '/user/refresh_token'});
@@ -85,8 +85,6 @@ const refreshToken = (req, res) => {
         if (!rf_token) {
             return res.status(400).json({msg: 'Please Login or Register'});
         }
-
-        //test
 
         jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (error, user) => {
             if(error) {
@@ -113,6 +111,7 @@ const getUser = async (req, res) => {
     }
 }
 
+
 // Create JSON Web Tokens
 const createAccessToken = (user) => {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'})
@@ -120,6 +119,7 @@ const createAccessToken = (user) => {
 const createRefreshToken = (user) => {
     return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
 }
+
 
 module.exports = {
     register,
