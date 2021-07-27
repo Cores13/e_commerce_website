@@ -34,3 +34,11 @@ React with TypeScript
 `yarn install`
 
 `yarn start`
+
+## .env file (enter your own values)
+```
+MONGODB_URL = 
+PORT = 
+ACCESS_TOKEN_SECRET = 
+REFRESH_TOKEN_SECRET =
+```
