@@ -68,6 +68,16 @@ const login = async (req, res) => {
     }
 }
 
+
+const logout = async (req, res) => {
+    try {
+        res.clearCookie('refreshtoken', {path: '/user/refresh_token'});
+        return res.json({msg: 'Logged out!'});
+    } catch (error) {
+        res.status(500).json({msg: error.message});
+    }
+}
+
 const refreshToken = (req, res) => {
     try {
         const rf_token = req.cookies.refreshtoken;
@@ -84,9 +94,19 @@ const refreshToken = (req, res) => {
 
             res.json({user, accesstoken})
         })
-
-        // res.json({rf_token});
     }catch (error) {
+        return res.status(500).json({msg: error.message});
+    }
+}
+
+const getUser = async (req, res) => {
+    try{
+        const user = await Users.findById(req.user.id).select('-password');
+        if(!user) {
+            return res.status(400).json({msg: 'User does not exist!'});
+        }
+        res.json(user);
+    } catch (error) {
         return res.status(500).json({msg: error.message});
     }
 }
@@ -102,5 +122,7 @@ const createRefreshToken = (user) => {
 module.exports = {
     register,
     login,
+    logout,
+    getUser,
     refreshToken
 };
