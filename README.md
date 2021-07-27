@@ -1,6 +1,6 @@
 # eCommerce Website
 # Backend 
-NodeJS
+NodeJS and MongoDB
 
 # Backend Modules
 * bcrypt 
