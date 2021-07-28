@@ -13,7 +13,7 @@ nav {
     padding-left: 40px;
     padding-right: 75px;
     text-transform: uppercase;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65));
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
 }
 .menu {
     display: none;
@@ -27,7 +27,7 @@ nav {
     align-items: center;
     color: white;
 }
-ul {
+.navList {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,9 +38,9 @@ ul {
     font-size: 3rem;
     text-decoration: none;
     text-transform: none;
-    color: #00B4D8;
+    color: #4ecdc4;
 }
-ul > li {
+.navList > li {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -52,8 +52,37 @@ ul > li {
     font-weight: 400;
 }
 .navLink:hover {
-    color: var(--light-green);
+    color: var(--logo-blue);
 }
 .navLink .active {
-    color: var(--light-green);
+    color: var(--logo-blue);
+}
+.MuiPaper-root {
+    background: transparent !important;
+}
+.MuiToolbar-root {
+    display: none !important;
+    font-family: 'Sriracha', cursive !important;
+}
+.MuiSvgIcon-root {
+    fill: var(--logo-blue) !important;
+}
+.MuiDrawer-paper {
+    color: white !important;
+    /* background: rgba(43, 43, 43, 0.9) !important; */
+    background: rgba(0, 0, 0, 0.77) !important;
+}
+.MuiTypography-body1 {
+    font-family: 'Sriracha', cursive !important;
+    font-weight: 100 !important;
+}
+@media (max-width: 1020px) {
+    .MuiToolbar-root {
+        display: flex !important;
+        background-color: transparent;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%); 
+    }
+    nav {
+        display: none !important;
+    }
 }
