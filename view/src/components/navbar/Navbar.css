@@ -62,8 +62,6 @@ nav {
 }
 .cartElem > span {
     border-radius: 25px;
-    /* width: 20px;
-    height: 18px; */
     padding: 3px;
     padding-top: 0;
     padding-bottom: 0;
@@ -82,7 +80,6 @@ nav {
 }
 .MuiDrawer-paper {
     color: white !important;
-    /* background: rgba(43, 43, 43, 0.9) !important; */
     background: rgba(0, 0, 0, 0.77) !important;
 }
 .MuiTypography-body1 {

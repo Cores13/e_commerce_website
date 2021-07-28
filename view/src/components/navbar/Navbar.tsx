@@ -6,9 +6,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import './Navbar.css';
 
-
-
-// ==========================
 import clsx from 'clsx';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -89,7 +86,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-// ==========================
 
 interface Props {
     
@@ -97,8 +93,6 @@ interface Props {
 
 export const Navbar: React.FC = ({}: Props) => {
     const value = React.useContext(GlobalState);
-
-// ================================
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -110,7 +104,7 @@ export const Navbar: React.FC = ({}: Props) => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-// ================================
+
 
     return (
 
