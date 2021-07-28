@@ -187,9 +187,10 @@ export const Navbar: React.FC = ({}: Props) => {
             </Link>
 
             <Link className="navLink" to="/cart">
-                <ListItem button key={'Korpa'}>
-                    <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
+                <ListItem button key={'Korpa'} className="cartElem">
+                    <ListItemIcon><ShoppingCartIcon className="cartIcon"/></ListItemIcon>
                     <ListItemText primary={'Korpa'} />
+                    <span>0</span>
                 </ListItem>
             </Link>
 
@@ -223,7 +224,7 @@ export const Navbar: React.FC = ({}: Props) => {
                      <li>
                          <Link className="navLink" to="/register">Registracija</Link>
                      </li>
-                     <li>
+                     <li className="cartElem">
                          <span>0</span>
                          <Link className="navLink" to="/cart">
                              <ShoppingCartIcon className="closeIcon"/>

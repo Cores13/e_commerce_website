@@ -57,15 +57,28 @@ nav {
 .navLink .active {
     color: var(--logo-blue);
 }
+.cartElem {
+    position: relative;
+}
+.cartElem > span {
+    border-radius: 25px;
+    /* width: 20px;
+    height: 18px; */
+    padding: 3px;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: absolute;
+    left: 19px;
+    top: -12px;
+    background-color: black;
+    color: white !important;
+}
 .MuiPaper-root {
     background: transparent !important;
 }
 .MuiToolbar-root {
     display: none !important;
     font-family: 'Sriracha', cursive !important;
-}
-.MuiSvgIcon-root {
-    fill: var(--logo-blue) !important;
 }
 .MuiDrawer-paper {
     color: white !important;
@@ -76,13 +89,22 @@ nav {
     font-family: 'Sriracha', cursive !important;
     font-weight: 100 !important;
 }
+
 @media (max-width: 1020px) {
     .MuiToolbar-root {
         display: flex !important;
         background-color: transparent;
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%); 
     }
+    .MuiSvgIcon-root {
+        fill: var(--logo-blue) !important;
+    }
     nav {
         display: none !important;
+    }
+    .cartElem > span {
+        position:unset;
+        background-color: transparent;
+        color: white !important;
     }
 }
