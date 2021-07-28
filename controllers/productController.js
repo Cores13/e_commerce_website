@@ -44,7 +44,10 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const {product_id, title, price, description, content, images, category} = req.body;
-        const updatedProduct = await Products.findOneAndUpdate({_id: req.params.id}, {product_id, title, price, description, content, images, category});
+        if(!images) {
+            return res.status(400).json({msg: 'No image uploaded.'});
+        }
+        const updatedProduct = await Products.findOneAndUpdate({_id: req.params.id}, {product_id, title: title.toLowerCase(), price, description, content, images, category});
         if(!updatedProduct) {
             return res.status(400).json({msg: 'Product that you want to update does not exist anymore.'});
         }
