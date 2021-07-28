@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
-const userRoutes = require('./routes/userRoutes');
-const categoryRoutes = require('./routes/categoryRoutes');
+const userRouter = require('./routes/userRouter');
+const categoryRouter = require('./routes/categoryRouter');
+const productRouter = require('./routes/productRouter');
 const upload = require('./routes/upload');
 
 const app = express();
@@ -29,10 +30,12 @@ mongoose.connect(URI, {
 });
 
 // Routes
-app.use('/user', userRoutes);
-app.use('/api', categoryRoutes);
+app.use('/user', userRouter);
+app.use('/api', categoryRouter);
 app.use('/api', upload);
+app.use('/api', productRouter);
 
+// Start a server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log('Server is runing on port ', PORT);

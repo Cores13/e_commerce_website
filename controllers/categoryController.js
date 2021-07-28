@@ -42,8 +42,7 @@ const updateCategory = async (req, res) => {
         const {name} = req.body;
         const updatedCategory = await Category.findOneAndUpdate({_id: req.params.id}, {name});
         if(!updatedCategory) {
-        return res.status(400).json({msg: 'Category that you want to update does not exist anymore.'});
-
+            return res.status(400).json({msg: 'Category that you want to update does not exist anymore.'});
         }
         res.json({msg: 'Category updated successfully.'});
     } catch (error) {
