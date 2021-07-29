@@ -4,10 +4,12 @@ interface Props {
     
 }
 
-export const Products: React.FC = ({}: Props) => {
+export const Login: React.FC = ({}: Props) => {
     return (
         <div>
-            PRODUCTS
+            LOGIN
         </div>
     )
 }
+
+
