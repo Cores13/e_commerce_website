@@ -38,7 +38,7 @@ nav {
     font-size: 3rem;
     text-decoration: none;
     text-transform: none;
-    color: #4ecdc4;
+    color: var(--logo-blue);
 }
 .navList > li {
     display: flex;
