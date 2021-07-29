@@ -2,7 +2,8 @@
   padding: 0;
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Sriracha', cursive;
+  /* Text font */
+  font-family: 'Andika New Basic', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -10,7 +11,16 @@
   --logo-blue: #4ecdc4;
   --green: #065a60;
   --light-green: #57cc99;
-  --bg-white: #EBF2FA;
+  --bg-white: #e6e6e6;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }
 body {
   min-height: 100vh;

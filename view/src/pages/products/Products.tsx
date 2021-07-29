@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
+import './Products.css'
 import {GlobalState} from '../../GlobalState'
 import {ProductItem} from '../../components/productItem/ProductItem'
 
 
-export interface Props {
+export interface IState {
     product: {
         category: string;
         checked: boolean;
@@ -28,19 +29,16 @@ export const Products: React.FC = () => {
     const state = useContext(GlobalState);
     const [products] = state?.productsAPI.products;
 
-    useEffect(() => {
-        const getProducts = async () => {
-            const [products] = state?.productsAPI.products;
-        }
-        getProducts();
-    }, [state, state?.productsAPI]);
+
 
     console.log(products);
     return (
-        <div className="products">
-            {products.map((product:Props['product']) => {
-                return <ProductItem key={product._id} product={product} />;
-            })}
+        <div className="productsWrapper">
+            <div className="products">
+                {products.map((product:IState['product']) => {
+                    return <ProductItem key={product._id} product={product} />;
+                })}
+            </div>
         </div>
     )
 }

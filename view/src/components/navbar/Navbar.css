@@ -49,7 +49,7 @@ nav {
 .navLink {
     text-decoration: none;
     color: white;
-    font-weight: 400;
+    font-weight: bold;
 }
 .navLink:hover {
     color: var(--logo-blue);
@@ -76,15 +76,17 @@ nav {
 }
 .MuiToolbar-root {
     display: none !important;
-    font-family: 'Sriracha', cursive !important;
+    font-family: 'Andika New Basic', sans-serif !important;
+    font-weight: bold !important;
 }
 .MuiDrawer-paper {
     color: white !important;
     background: rgba(0, 0, 0, 0.77) !important;
 }
 .MuiTypography-body1 {
-    font-family: 'Sriracha', cursive !important;
-    font-weight: 100 !important;
+    font-family: 'Andika New Basic', sans-serif !important;
+    font-weight: bold !important;
+
 }
 
 @media (max-width: 1020px) {

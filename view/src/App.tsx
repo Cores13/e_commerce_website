@@ -8,6 +8,7 @@ import {Login} from './pages/login/Login'
 import {Products} from './pages/products/Products'
 import {Register} from './pages/register/Register'
 import {NotFound} from './pages/notFound/NotFound'
+import {ProductDetail} from './pages/productDetail/ProductDetail'
 
 
 import './App.css';
@@ -33,6 +34,9 @@ function App() {
             </Route>
             <Route exact path="/products">
               <Products />
+            </Route>
+            <Route exact path="/detail/:id">
+              <ProductDetail />
             </Route>
             <Route exact path="*">
               <NotFound />
