@@ -61,6 +61,7 @@
 .detailProductRightBottom {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -77,12 +78,17 @@
     font-size: 1.5rem;
     font-weight: unset;
 }
+.detailProductButtons {
+    margin-top: 15px;
+}
 #detailProductBuyBtn {
     background: var(--green);
     padding: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-right: 15px;
+    margin-left: 15px;
+    margin: 15px;
     border-radius: 10px;
     text-decoration: none;
     font-weight: bold;
