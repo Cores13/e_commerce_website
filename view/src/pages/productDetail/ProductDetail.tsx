@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import {GlobalState} from '../../GlobalState'
 import {IState as IProduct} from '../../pages/products/Products'
 import {Link} from 'react-router-dom';
+import { ProductItem } from '../../components/productItem/ProductItem';
 import './ProductDetail.css'
 
 interface Props {
@@ -46,7 +47,6 @@ export const ProductDetail: React.FC = () => {
             })
         }
     }, [id, products])
-    console.log(detailProduct);
 
     const propOwn = Object.getOwnPropertyNames(detailProduct);
 
@@ -60,16 +60,29 @@ export const ProductDetail: React.FC = () => {
                 <div className="detailProductRight">
                     <div className="detailProductRightTop">
                         <h1 className="detailProductTitle">{detailProduct.title}</h1>
-                        <p className="detailProductDescription">{detailProduct.description}</p>
+                        <p className="detailProductId">ID: {detailProduct.product_id}</p>
+                        <h3 className="detailProductContent">{detailProduct.content}</h3>
+                        <h3 className="detailProductDescription">{detailProduct.description}</h3>
                     </div>
+                        {/* <p className="detailProductSold">Prodato: {detailProduct.sold}kom</p> */}
                     <div className="detailProductRightBottom">
-                        <p className="detailProductPrice">Cijena: {detailProduct.price}KM</p>
+                        <p className="detailProductPrice"><span className="detailProductPriceTitle">Cijena:</span> {detailProduct.price}KM</p>
                         <div className="detailProductButtons">
                             <Link id="detailProductBuyBtn" to="#!">
                                 KUPI
                             </Link>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="detailProductRelated">
+                <h2 className="detailProductRelatedTitle">Srodni proizvodi</h2>
+                <div className="detailProductRelatedProduct">
+                    {
+                        products.map((product:IProduct['product']) => {
+                            return product.category === detailProduct.category ? <ProductItem key={product._id} product={product}/> : null;
+                        })
+                    }
                 </div>
             </div>
         </div>

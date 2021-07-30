@@ -30,8 +30,6 @@ export const Products: React.FC = () => {
     const [products] = state?.productsAPI.products;
 
 
-
-    console.log(products);
     return (
         <div className="productsWrapper">
             <div className="products">

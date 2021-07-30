@@ -16,12 +16,12 @@ export const ProductItem: React.FC<Props> = ({product}) => {
                     <p className="productItemDescription">{product.description}</p>
                 </div>
                 <div className="productItemBodyBottom">
-                    <p className="productItemPrice">Cijena: {product.price}KM</p>
+                    <p className="productItemPrice"><span className="productItemPriceTitle">Cijena:</span> {product.price}KM</p>
                     <div className="buttons">
                         <Link id="buyBtn" to="#!">
                             KUPI
                         </Link>
-                        <Link id="detailsBtn" to={`detail/${product._id}`}>
+                        <Link id="detailsBtn" to={`/detail/${product._id}`}>
                             DETALJNO
                         </Link>
                     </div>

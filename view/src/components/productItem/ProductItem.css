@@ -1,8 +1,8 @@
 .productItem {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    height: 350px;
+    min-width: 250px;
+    height: 350px !important;
     -webkit-box-shadow: 0px 2px 15px -3px #000000; 
     box-shadow: 0px 2px 15px -3px #000000;
     border-radius: 7px;
@@ -31,6 +31,9 @@
     text-align:justify;
     font-size: 1rem;
     font-weight: bold;
+}
+.productItemPriceTitle {
+    font-weight: normal;
 }
 .buttons {
     display: flex;
