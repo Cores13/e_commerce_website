@@ -4,6 +4,7 @@ import {GlobalState} from '../../GlobalState'
 import {IState as IProduct} from '../../pages/products/Products'
 import {Link} from 'react-router-dom';
 import { ProductItem } from '../../components/productItem/ProductItem';
+import {Loading} from '../../components/loading/Loading'
 import './ProductDetail.css'
 
 interface Props {
@@ -50,8 +51,9 @@ export const ProductDetail: React.FC = () => {
 
     const propOwn = Object.getOwnPropertyNames(detailProduct);
 
-    if(propOwn.length === 0) return null;
+    if(propOwn.length === 0) return <Loading />;
     return (
+        <>
         <div className="detailProductWrapper">
             <div className="detailProduct">
                 <div className="detailProductLeft">
@@ -85,6 +87,8 @@ export const ProductDetail: React.FC = () => {
                     }
                 </div>
             </div>
+            {propOwn.length === 0 && <Loading />}
         </div>
+        </>
     )
 }

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import './Products.css'
 import {GlobalState} from '../../GlobalState'
 import {ProductItem} from '../../components/productItem/ProductItem'
-
+import {Loading} from '../../components/loading/Loading'
 
 export interface IState {
     product: {
@@ -29,8 +29,10 @@ export const Products: React.FC = () => {
     const state = useContext(GlobalState);
     const [products] = state?.productsAPI.products;
 
-
+    if(products.length === 0) return <Loading />;
     return (
+        <>
+        {products.length === 0 && <Loading />}
         <div className="productsWrapper">
             <div className="products">
                 {products.map((product:IState['product']) => {
@@ -38,5 +40,6 @@ export const Products: React.FC = () => {
                 })}
             </div>
         </div>
+        </>
     )
 }
