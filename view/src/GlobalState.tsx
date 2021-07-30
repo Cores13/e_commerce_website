@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {createContext, useEffect, useState} from 'react';
 import ProductsAPI from './api/ProductsAPI';
+import UserAPI from './api/UserAPI';
 
 interface ContextType {
     token: (boolean | React.Dispatch<React.SetStateAction<boolean>>)[]; 
@@ -28,7 +29,8 @@ export const DataProvider: React.FC = ({children}) => {
     ProductsAPI();
     const state = {
         token: [token ,setToken],
-        productsAPI: ProductsAPI()
+        productsAPI: ProductsAPI(),
+        userAPI: UserAPI(token)
     }
 
     return (

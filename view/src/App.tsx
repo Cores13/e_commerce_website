@@ -1,4 +1,5 @@
-// import React, {useEffect} from 'react';
+import React, {useContext} from 'react'
+import {GlobalState} from './GlobalState'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {DataProvider} from './GlobalState'
 import {Navbar} from './components/navbar/Navbar'
@@ -14,6 +15,9 @@ import {ProductDetail} from './pages/productDetail/ProductDetail'
 import './App.css';
 
 function App() {
+  const state = useContext(GlobalState);
+  console.log(state);
+  
   return (
     <DataProvider>
       <Router>
