@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect, ReactElement } from 'react'
+import { useState, useEffect } from 'react'
 
 
 export default function ProductsAPI() {

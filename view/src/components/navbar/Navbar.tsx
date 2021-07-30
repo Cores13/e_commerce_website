@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {GlobalState} from '../../GlobalState'
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -87,12 +86,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface Props {
-    
-}
-
-export const Navbar: React.FC = ({}: Props) => {
-    const value = React.useContext(GlobalState);
+export const Navbar: React.FC = () => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -107,7 +101,6 @@ export const Navbar: React.FC = ({}: Props) => {
 
 
     return (
-
             <>
         <div className={classes.root}>
       <CssBaseline />

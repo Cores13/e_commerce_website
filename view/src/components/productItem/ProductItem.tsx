@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './ProductItem.css'
 import {IState as IProduct} from '../../pages/products/Products'
 import {Link} from 'react-router-dom';

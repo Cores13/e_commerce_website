@@ -8,7 +8,7 @@ interface ContextType {
     } | any;
 }
 
-export const GlobalState = React.createContext<ContextType | undefined>(undefined);
+export const GlobalState = createContext<ContextType | undefined>(undefined);
 
 export const DataProvider: React.FC = ({children}) => {
     const [token, setToken] = useState(false);
