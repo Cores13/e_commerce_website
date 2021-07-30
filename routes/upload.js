@@ -34,7 +34,10 @@ router.post('/upload', auth, authAdmin, (req, res) => {
         }
 
         cloudinary.v2.uploader.upload(file.tempFilePath, {folder: 'ribosport'}, async(error, result) => {
-            if(error) throw error;
+            if(error) {
+                removeTmp(file.tempFilePath);
+                throw error;
+            }
 
             removeTmp(file.tempFilePath);
             res.json({public_id: result.public_id, url: result.secure_url});

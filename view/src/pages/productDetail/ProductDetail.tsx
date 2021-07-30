@@ -35,8 +35,12 @@ export const ProductDetail: React.FC = () => {
     return (
         <div className="detailProductWrapper">
             <div className="detailProduct">
-                <div className="detailProductLeft"></div>
-                <div className="detailProductRight"></div>
+                <div className="detailProductLeft">
+
+                </div>
+                <div className="detailProductRight">
+                    
+                </div>
             </div>
         </div>
     )

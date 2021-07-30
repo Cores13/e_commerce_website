@@ -7,7 +7,7 @@
     box-shadow: 0px 2px 15px -3px #000000;
     border-radius: 7px;
     margin: 25px;
-    background: var(--bg-white);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.87), var(--green));
 }
 .productImg {
     width: 100%;
@@ -24,6 +24,7 @@
     text-align: left;
     width: 100%;
     height: 100%;
+    color: white;
 }
 .productItemPrice {
     justify-self: flex-end;
