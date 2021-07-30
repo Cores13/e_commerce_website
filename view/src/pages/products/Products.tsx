@@ -13,7 +13,8 @@ export interface IState {
         description: string;
         images: {
             public_id: string; 
-            url: string;}
+            url: string;
+        }
         price: number;
         product_id: string;
         sold: number;

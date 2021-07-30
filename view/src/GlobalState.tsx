@@ -1,4 +1,5 @@
-import React, {createContext, useState} from 'react';
+import axios from 'axios';
+import React, {createContext, useEffect, useState} from 'react';
 import ProductsAPI from './api/ProductsAPI';
 
 interface ContextType {
@@ -12,6 +13,17 @@ export const GlobalState = createContext<ContextType | undefined>(undefined);
 
 export const DataProvider: React.FC = ({children}) => {
     const [token, setToken] = useState(false);
+
+    const refreshToken = async () => {
+        const res = await axios.get('/user/refresh_token');
+
+        setToken(res.data.accesstoken);
+    }
+
+    useEffect(() => {
+        const firstLogin = localStorage.getItem('firstLogin');
+        if(firstLogin) refreshToken();
+    }, [])
 
     ProductsAPI();
     const state = {
