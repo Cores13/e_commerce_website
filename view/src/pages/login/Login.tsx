@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-// import {Loading} from '../../components/loading/Loading'
 
 export const Login: React.FC = () => {
   const [user, setUser] = useState({
@@ -33,6 +32,10 @@ export const Login: React.FC = () => {
     <div className='loginWrapper'>
       <div className='login'>
         <form className='loginForm' onSubmit={handleSubmit}>
+          <h1 className='loginTitle'>Prijava</h1>
+          <label htmlFor='email' className='emailLabel'>
+            Email
+          </label>
           <input
             type='email'
             name='email'
@@ -42,7 +45,9 @@ export const Login: React.FC = () => {
             value={user.email}
             onChange={(e) => onChangeInput(e)}
           />
-
+          <label htmlFor='password' className='passwordLabel'>
+            Lozinka
+          </label>
           <input
             type='password'
             name='password'
@@ -58,11 +63,12 @@ export const Login: React.FC = () => {
             <button type='submit' className='loginButton'>
               Prijavi se
             </button>
-            <Link to='/register'>Registracija</Link>
+            <Link to='/register' className='registerButton'>
+              Registracija
+            </Link>
           </div>
         </form>
       </div>
-      {/* <Loading /> */}
     </div>
   );
 };

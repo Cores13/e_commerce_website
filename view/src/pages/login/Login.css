@@ -1,3 +1,89 @@
 .loginWrapper {
-  margin-top: 90px;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url("../../images/landingBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+}
+.loginTitle {
+  color: white;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 25px;
+  width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+}
+.email,
+.password,
+.name {
+  margin: 15px;
+  height: 45px;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  padding: 10px;
+  color: white;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+.emailLabel,
+.passwordLabel,
+.nameLabel {
+  color: white;
+  text-align: left;
+  margin-left: 15px;
+}
+.loginButtons {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.loginButton {
+  background: var(--green);
+  padding: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  outline: none;
+  border: none;
+}
+.registerButton {
+  background: rgb(97, 97, 97);
+  padding: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
 }
