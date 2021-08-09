@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalState } from "./GlobalState";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar } from "./components/navbar/Navbar";
 import { Cart } from "./pages/cart/Cart";
 import { Landing } from "./pages/landing/Landing";
@@ -14,8 +14,8 @@ import "./App.css";
 
 function App() {
   const state = useContext(GlobalState);
-  const [isLogged, setIsLogged] = state?.userAPI?.isLogged;
-  const [isAdmin, setIsAdmin] = state?.userAPI?.isAdmin;
+  const [isLogged] = state?.userAPI?.isLogged;
+  // const [isAdmin, setIsAdmin] = state?.userAPI?.isAdmin;
 
   return (
     // <DataProvider>

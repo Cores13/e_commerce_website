@@ -1,13 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from "react";
 
-interface Props {
-    
-}
-
-export const NotFound: React.FC = ({}: Props) => {
-    return (
-        <div>
-            404 Page Not Found
-        </div>
-    )
-}
+export const NotFound: React.FC = () => {
+  return <div>404 Page Not Found</div>;
+};
