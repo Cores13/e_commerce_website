@@ -1,109 +1,116 @@
 nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    min-height: 80px;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    /* border-bottom: 1px solid black; */
-    justify-content: space-between;
-    padding-left: 40px;
-    padding-right: 75px;
-    text-transform: uppercase;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  min-height: 80px;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  /* border-bottom: 1px solid black; */
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 75px;
+  text-transform: uppercase;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
 }
 .menu {
-    display: none;
+  display: none;
 }
 .closeBtn {
-    display: none;
+  display: none;
 }
 .menuItems {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
 }
 .navList {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .logo {
-    font-family: 'Courgette', cursive;
-    font-weight: bold;
-    font-size: 3rem;
-    text-decoration: none;
-    text-transform: none;
-    color: var(--logo-blue);
+  font-family: "Courgette", cursive;
+  font-weight: bold;
+  font-size: 3rem;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--logo-blue);
 }
 .navList > li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 75px;
 }
 .navLink {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 .navLink:hover {
-    color: var(--logo-blue);
+  color: var(--logo-blue);
 }
 .navLink .active {
-    color: var(--logo-blue);
+  color: var(--logo-blue);
 }
 .cartElem {
-    position: relative;
+  position: relative;
 }
 .cartElem > span {
-    border-radius: 25px;
-    padding: 3px;
-    padding-top: 0;
-    padding-bottom: 0;
-    position: absolute;
-    left: 19px;
-    top: -12px;
-    background-color: black;
-    color: white !important;
+  border-radius: 25px;
+  padding: 3px;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: absolute;
+  left: 19px;
+  top: -12px;
+  background-color: black;
+  color: white !important;
 }
 .MuiPaper-root {
-    background: transparent !important;
+  background: transparent !important;
 }
 .MuiToolbar-root {
-    display: none !important;
-    font-family: 'Andika New Basic', sans-serif !important;
-    font-weight: bold !important;
+  display: none !important;
+  font-family: "Andika New Basic", sans-serif !important;
+  font-weight: bold !important;
 }
 .MuiDrawer-paper {
-    color: white !important;
-    background: rgba(0, 0, 0, 0.77) !important;
+  color: white !important;
+  background: rgba(0, 0, 0, 0.77) !important;
 }
 .MuiTypography-body1 {
-    font-family: 'Andika New Basic', sans-serif !important;
-    font-weight: bold !important;
-
+  font-family: "Andika New Basic", sans-serif !important;
+  font-weight: bold !important;
 }
 
-@media (max-width: 1020px) {
-    .MuiToolbar-root {
-        display: flex !important;
-        background-color: transparent;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%); 
-    }
-    .MuiSvgIcon-root {
-        fill: var(--logo-blue) !important;
-    }
-    nav {
-        display: none !important;
-    }
-    .cartElem > span {
-        position:unset;
-        background-color: transparent;
-        color: white !important;
-    }
+@media (max-width: 1024px) {
+  .MuiToolbar-root {
+    display: flex !important;
+    background-color: transparent;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+  .MuiSvgIcon-root {
+    fill: var(--logo-blue) !important;
+  }
+  nav {
+    display: none !important;
+  }
+  .cartElem > span {
+    position: unset;
+    background-color: transparent;
+    color: white !important;
+  }
 }

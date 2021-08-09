@@ -24,28 +24,22 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path='/'>
-            {isLogged ? <Landing /> : <Login />}
-            {/* <Landing /> */}
+            <Landing />
           </Route>
           <Route exact path='/cart'>
-            {isLogged ? <Cart /> : <Login />}
-            {/* <Cart /> */}
+            <Cart />
           </Route>
           <Route exact path='/login'>
             {isLogged ? <Landing /> : <Login />}
-            {/* <Login /> */}
           </Route>
           <Route exact path='/register'>
             {isLogged ? <Landing /> : <Register />}
-            {/* <Register /> */}
           </Route>
           <Route exact path='/products'>
-            {isLogged ? <Products /> : <Login />}
-            {/* <Products /> */}
+            <Products />
           </Route>
           <Route exact path='/detail/:id'>
-            {isLogged ? <ProductDetail /> : <Login />}
-            {/* <ProductDetail /> */}
+            <ProductDetail />
           </Route>
           <Route exact path='*'>
             <NotFound />

@@ -30,6 +30,11 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import PersonIcon from "@material-ui/icons/Person";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import HistoryIcon from "@material-ui/icons/History";
+import CategoryIcon from "@material-ui/icons/Category";
+import AddIcon from "@material-ui/icons/Add";
+import axios from "axios";
 
 const drawerWidth = 240;
 
@@ -119,7 +124,7 @@ export const Navbar: React.FC = () => {
         <Link className='navLink' to='/create_product'>
           <ListItem button key={"Kreiraj proizvod"}>
             <ListItemIcon>
-              <PersonIcon />
+              <AddIcon />
             </ListItemIcon>
             <ListItemText primary={"Kreiraj proizvod"} />
           </ListItem>
@@ -128,13 +133,21 @@ export const Navbar: React.FC = () => {
         <Link className='navLink' to='/category'>
           <ListItem button key={"Kategorije"}>
             <ListItemIcon>
-              <PersonAddIcon />
+              <CategoryIcon />
             </ListItemIcon>
             <ListItemText primary={"Kategorije"} />
           </ListItem>
         </Link>
       </>
     );
+  };
+
+  const logoutUser = async () => {
+    await axios.post("/user/logout");
+    localStorage.clear();
+    setIsAdmin(false);
+    setIsLogged(false);
+    window.location.reload();
   };
 
   const loggedRouter = () => {
@@ -146,7 +159,7 @@ export const Navbar: React.FC = () => {
           </Link>
         </li>
         <li>
-          <Link to='/' className='navLink'>
+          <Link to='/' className='navLink' onClick={logoutUser}>
             Odjava
           </Link>
         </li>
@@ -159,16 +172,16 @@ export const Navbar: React.FC = () => {
         <Link className='navLink' to='/history'>
           <ListItem button key={"Historija"}>
             <ListItemIcon>
-              <PersonIcon />
+              <HistoryIcon />
             </ListItemIcon>
             <ListItemText primary={"Historija"} />
           </ListItem>
         </Link>
 
-        <Link className='navLink' to='/'>
+        <Link className='navLink' to='/' onClick={logoutUser}>
           <ListItem button key={"Odjava"}>
             <ListItemIcon>
-              <PersonAddIcon />
+              <ExitToAppIcon />
             </ListItemIcon>
             <ListItemText primary={"Odjava"} />
           </ListItem>
@@ -253,6 +266,19 @@ export const Navbar: React.FC = () => {
                 <ListItemText primary={isAdmin ? "Proizvodi" : "Kupovina"} />
               </ListItem>
             </Link>
+
+            {isAdmin ? null : (
+              <Link className='navLink' to='/cart'>
+                <ListItem button key={"Korpa"} className='cartElem'>
+                  <ListItemIcon>
+                    <ShoppingCartIcon className='cartIcon' />
+                  </ListItemIcon>
+                  <ListItemText primary={"Korpa"} />
+                  <span>0</span>
+                </ListItem>
+              </Link>
+            )}
+
             {isAdmin && adminRouterMobile()}
             {/* If user is logged in, show logout link instead of login link */}
             {isLogged ? (
@@ -277,16 +303,6 @@ export const Navbar: React.FC = () => {
                 </ListItem>
               </Link>
             )}
-
-            <Link className='navLink' to='/cart'>
-              <ListItem button key={"Korpa"} className='cartElem'>
-                <ListItemIcon>
-                  <ShoppingCartIcon className='cartIcon' />
-                </ListItemIcon>
-                <ListItemText primary={"Korpa"} />
-                <span>0</span>
-              </ListItem>
-            </Link>
           </List>
         </Drawer>
       </div>
@@ -335,16 +351,15 @@ export const Navbar: React.FC = () => {
                 </Link>
               </li>
             )}
-            <li className='cartElem'>
-              <span>0</span>
-              <Link className='navLink' to='/cart'>
-                <ShoppingCartIcon className='closeIcon' />
-              </Link>
-            </li>
+            {isAdmin ? null : (
+              <li className='cartElem'>
+                <span>0</span>
+                <Link className='navLink' to='/cart'>
+                  <ShoppingCartIcon className='closeIcon' />
+                </Link>
+              </li>
+            )}
           </ul>
-          <div className='closeBtn'>
-            <CloseIcon className='cartIcon' />
-          </div>
         </div>
       </nav>
     </>
