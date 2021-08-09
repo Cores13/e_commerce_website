@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import "./Navbar.css";
 import { GlobalState } from "../../GlobalState";
