@@ -100,6 +100,7 @@ export const Navbar: React.FC = () => {
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state?.userAPI?.isLogged;
   const [isAdmin, setIsAdmin] = state?.userAPI?.isAdmin;
+  const [cart, setCart] = state?.userAPI?.cart;
 
   const adminRouter = () => {
     return (
@@ -273,7 +274,7 @@ export const Navbar: React.FC = () => {
                     <ShoppingCartIcon className='cartIcon' />
                   </ListItemIcon>
                   <ListItemText primary={"Korpa"} />
-                  <span>0</span>
+                  <span>{cart.length}</span>
                 </ListItem>
               </Link>
             )}
@@ -352,7 +353,7 @@ export const Navbar: React.FC = () => {
             )}
             {isAdmin ? null : (
               <li className='cartElem'>
-                <span>0</span>
+                <span>{cart.length}</span>
                 <Link className='navLink' to='/cart'>
                   <ShoppingCartIcon className='closeIcon' />
                 </Link>

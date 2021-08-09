@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ProductItem.css";
 import { IState as IProduct } from "../../pages/products/Products";
+import { GlobalState } from "../../GlobalState";
 import { Link } from "react-router-dom";
 interface Props {
   product: IProduct["product"];
@@ -8,8 +9,18 @@ interface Props {
 }
 
 export const ProductItem: React.FC<Props> = ({ product, isAdmin }) => {
+  const state = useContext(GlobalState);
+  const addCart: any = state?.userAPI?.addCart;
+
   return (
     <div className='productItem'>
+      {isAdmin && (
+        <input
+          type='checkbox'
+          checked={product.checked}
+          className='productItemCheckbox'
+        />
+      )}
       <img src={product.images.url} alt='Product' className='productImg' />
       <div className='productItemBody'>
         <div className='productItemBodyTop'>
@@ -22,12 +33,25 @@ export const ProductItem: React.FC<Props> = ({ product, isAdmin }) => {
             {product.price}KM
           </p>
           <div className='buttons'>
-            <Link id='buyBtn' to='#!'>
-              KUPI
-            </Link>
-            <Link id='detailsBtn' to={`/detail/${product._id}`}>
-              DETALJNO
-            </Link>
+            {isAdmin ? (
+              <>
+                <Link id='buyBtn' to={`/edit_product/${product._id}`}>
+                  UREDI
+                </Link>
+                <Link id='detailsBtn' to='#!'>
+                  IZBRISI
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link id='buyBtn' to='#!' onClick={() => addCart(product)}>
+                  KUPI
+                </Link>
+                <Link id='detailsBtn' to={`/detail/${product._id}`}>
+                  DETALJNO
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

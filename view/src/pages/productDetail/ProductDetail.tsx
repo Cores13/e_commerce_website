@@ -10,7 +10,8 @@ import "./ProductDetail.css";
 interface Props {
   id: any;
   isAdmin: boolean;
-  // detailProduct: IProduct['product'];
+  addCart: any;
+  cart: any;
   detailProduct:
     | {
         category: string;
@@ -43,6 +44,7 @@ export const ProductDetail: React.FC = () => {
     {}
   );
   const [isAdmin] = state?.userAPI?.isAdmin;
+  const addCart: any = state?.userAPI?.addCart;
 
   useEffect(() => {
     if (id) {
@@ -77,14 +79,16 @@ export const ProductDetail: React.FC = () => {
                 {detailProduct.description}
               </h3>
             </div>
-            {/* <p className="detailProductSold">Prodato: {detailProduct.sold}kom</p> */}
             <div className='detailProductRightBottom'>
               <p className='detailProductPrice'>
                 <span className='detailProductPriceTitle'>Cijena:</span>{" "}
                 {detailProduct.price}KM
               </p>
               <div className='detailProductButtons'>
-                <Link id='detailProductBuyBtn' to='#!'>
+                <Link
+                  id='detailProductBuyBtn'
+                  to='#!'
+                  onClick={() => addCart(detailProduct)}>
                   KUPI
                 </Link>
               </div>
