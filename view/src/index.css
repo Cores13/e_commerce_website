@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   /* Text font */
-  font-family: 'Andika New Basic', sans-serif;
+  font-family: "Andika New Basic", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -14,15 +14,15 @@
   --bg-white: #e6e6e6;
 }
 ::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
+  width: 0; /* Remove scrollbar space */
   background: transparent;
-  height: 0;  /* Optional: just make scrollbar invisible */
+  height: 0; /* Optional: just make scrollbar invisible */
 }
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  width: 0;  /* Remove scrollbar space */
-  background: transparent; 
-  height: 0 /* Optional: just make scrollbar invisible */
+  width: 0; /* Remove scrollbar space */
+  background: transparent;
+  height: 0; /* Optional: just make scrollbar invisible */
 }
 body {
   min-height: 100vh;
@@ -31,6 +31,6 @@ body {
   /* background: var(--green) !important; */
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

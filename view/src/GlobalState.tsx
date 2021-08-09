@@ -3,11 +3,15 @@ import React, {createContext, useEffect, useState} from 'react';
 import ProductsAPI from './api/ProductsAPI';
 import UserAPI from './api/UserAPI';
 
-interface ContextType {
+export interface ContextType {
     token: (boolean | React.Dispatch<React.SetStateAction<boolean>>)[]; 
     productsAPI: { 
         products: (never[] | React.Dispatch<React.SetStateAction<never[]>>)[] ;
     } | any;
+    userAPI: {
+        isLogged: (boolean | React.Dispatch<React.SetStateAction<boolean>>) | any;
+        isAdmin: (boolean | React.Dispatch<React.SetStateAction<boolean>>) | any;
+    } | undefined;
 }
 
 export const GlobalState = createContext<ContextType | undefined>(undefined);
