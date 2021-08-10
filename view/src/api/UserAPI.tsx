@@ -30,6 +30,8 @@ export default function UserAPI(token: any) {
           });
           setIsLogged(true);
           res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
+
+          setCart(res.data.cart);
         } catch (error: any) {
           alert(error.res.data.msg);
         }
@@ -47,12 +49,27 @@ export default function UserAPI(token: any) {
 
     if (check) {
       setCart([...cart, { ...product, quantity: 1 }]);
+
+      await axios.patch(
+        "/user/addcart",
+        {
+          cart: [...cart, { ...product, quantity: 1 }],
+        },
+        { headers: { Authorization: token } }
+      );
     } else {
       cart.map((item: any) => {
         if (item._id === product._id) {
           item.quantity += 1;
           console.log(item.quantity);
           console.log(cart);
+          axios.patch(
+            "/user/addcart",
+            {
+              cart: [...cart, { ...product, quantity: item.quantity }],
+            },
+            { headers: { Authorization: token } }
+          );
         }
       });
     }
