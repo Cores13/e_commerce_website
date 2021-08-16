@@ -77,6 +77,7 @@
   color: white;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 .registerButton {
   background: rgb(97, 97, 97);
@@ -86,4 +87,5 @@
   border-radius: 10px;
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }

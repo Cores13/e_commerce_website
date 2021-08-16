@@ -41,7 +41,7 @@ export default function UserAPI(token: any) {
   }, [token, isAdmin]);
 
   const addCart = async (product: any) => {
-    if (!isLogged) return alert("Please log in first.");
+    if (!isLogged) return alert("Molimo prijavite se.");
 
     const check = cart.every((item: any) => {
       return item._id !== product._id;
@@ -58,20 +58,7 @@ export default function UserAPI(token: any) {
         { headers: { Authorization: token } }
       );
     } else {
-      cart.map((item: any) => {
-        if (item._id === product._id) {
-          item.quantity += 1;
-          console.log(item.quantity);
-          console.log(cart);
-          axios.patch(
-            "/user/addcart",
-            {
-              cart: [...cart, { ...product, quantity: item.quantity }],
-            },
-            { headers: { Authorization: token } }
-          );
-        }
-      });
+      alert("Vec ste dodali ovaj artikal u korpu!");
     }
   };
 

@@ -4,7 +4,7 @@ import ProductsAPI from "./api/ProductsAPI";
 import UserAPI from "./api/UserAPI";
 
 export interface ContextType {
-  token: (boolean | React.Dispatch<React.SetStateAction<boolean>>)[];
+  token: (boolean | React.Dispatch<React.SetStateAction<boolean>>)[] | any;
   productsAPI:
     | {
         products: (never[] | React.Dispatch<React.SetStateAction<never[]>>)[];

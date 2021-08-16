@@ -2,16 +2,38 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import { CartItem } from "../../components/cartItem/CartItem";
 import "./Cart.css";
+import axios from "axios";
 
 interface Props {}
 
 export const Cart: React.FC = ({}: Props) => {
   const state = useContext(GlobalState);
-  const [cart] = state?.userAPI?.cart;
+  const [cart, setCart] = state?.userAPI?.cart;
+  const [token] = state?.token;
   const [total, setTotal] = useState(0);
 
+  useEffect(() => {
+    const getTotal = async () => {
+      const total = cart.reduce((prev: any, item: any) => {
+        return prev + item.price * item.quantity;
+      }, 0);
+      setTotal(total);
+    };
+    getTotal();
+  }, [cart]);
+
+  // const addToCart = async () => {
+  //   await axios.post(
+  //     "/user/addcart",
+  //     { cart },
+  //     {
+  //       headers: { Authorization: token },
+  //     }
+  //   );
+  // };
+
   console.log(cart);
-  // var total: number = 0;
+
   if (cart.length === 0) {
     return <h2>KORPA JE PRAZNA</h2>;
   }
@@ -40,12 +62,6 @@ export const Cart: React.FC = ({}: Props) => {
           <div className='cartRight'>
             <div className='cartRightTop'>Ukupno: {total}</div>
             <div className='cartRightBottom'>
-              {/* <p>
-                {cart.map((item: any) => {
-                  return (total +=
-                    parseInt(item.price, 10) * parseInt(item.quantity, 10));
-                })}
-              </p> */}
               <button className='cartPayment'>Zavrsi kupovinu</button>
             </div>
           </div>
