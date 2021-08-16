@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import { CartItem } from "../../components/cartItem/CartItem";
 import "./Cart.css";
-import axios from "axios";
+import PayPalButton from "./PayPalButton";
 
 interface Props {}
 
 export const Cart: React.FC = ({}: Props) => {
   const state = useContext(GlobalState);
-  const [cart, setCart] = state?.userAPI?.cart;
-  const [token] = state?.token;
+  const [cart] = state?.userAPI?.cart;
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -22,15 +21,9 @@ export const Cart: React.FC = ({}: Props) => {
     getTotal();
   }, [cart]);
 
-  // const addToCart = async () => {
-  //   await axios.post(
-  //     "/user/addcart",
-  //     { cart },
-  //     {
-  //       headers: { Authorization: token },
-  //     }
-  //   );
-  // };
+  const tranSuccess = async (payment: any) => {
+    console.log(payment);
+  };
 
   console.log(cart);
 
@@ -62,7 +55,7 @@ export const Cart: React.FC = ({}: Props) => {
           <div className='cartRight'>
             <div className='cartRightTop'>Ukupno: {total}</div>
             <div className='cartRightBottom'>
-              <button className='cartPayment'>Zavrsi kupovinu</button>
+              <PayPalButton total={total} tranSuccess={tranSuccess} />
             </div>
           </div>
         </div>

@@ -27,7 +27,8 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.3"
+    "mongoose": "^5.13.3",
+    "react-paypal-express-checkout": "^1.0.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
