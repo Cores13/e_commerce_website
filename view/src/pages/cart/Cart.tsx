@@ -3,13 +3,14 @@ import { GlobalState } from "../../GlobalState";
 import { CartItem } from "../../components/cartItem/CartItem";
 import "./Cart.css";
 import PayPalButton from "./PayPalButton";
-
+import axios from "axios";
 interface Props {}
 
 export const Cart: React.FC = ({}: Props) => {
   const state = useContext(GlobalState);
-  const [cart] = state?.userAPI?.cart;
+  const [cart, setCart] = state?.userAPI?.cart;
   const [total, setTotal] = useState(0);
+  const [token] = state?.token;
 
   useEffect(() => {
     const getTotal = async () => {
@@ -21,8 +22,33 @@ export const Cart: React.FC = ({}: Props) => {
     getTotal();
   }, [cart]);
 
+  const addToCart = async () => {
+    await axios.patch(
+      "/user/addcart",
+      { cart },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
   const tranSuccess = async (payment: any) => {
-    console.log(payment);
+    const { paymentID, address } = payment;
+
+    await axios
+      .post(
+        "/api/payment",
+        { cart, paymentID, address },
+        {
+          headers: { Authorization: token },
+        }
+      )
+      .finally(() => {
+        setCart([]);
+        console.log("here");
+        addToCart();
+        alert("Uspjesno ste zavrsili narudzbu.");
+      });
   };
 
   console.log(cart);

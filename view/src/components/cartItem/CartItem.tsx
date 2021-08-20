@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext } from "react";
+import React, { useContext } from "react";
 import "./CartItem.css";
 import { GlobalState } from "../../GlobalState";
 import DeleteIcon from "@material-ui/icons/Delete";

@@ -29,7 +29,7 @@ const createPayments = async (req, res) => {
       paymentID,
       address,
     });
-
+    await newPayment.save();
     res.json({ newPayment });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
