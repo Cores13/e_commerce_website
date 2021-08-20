@@ -4,13 +4,13 @@ import { CartItem } from "../../components/cartItem/CartItem";
 import "./Cart.css";
 import PayPalButton from "./PayPalButton";
 import axios from "axios";
-interface Props {}
 
-export const Cart: React.FC = ({}: Props) => {
+export const Cart: React.FC = () => {
   const state = useContext(GlobalState);
   const [cart, setCart] = state?.userAPI?.cart;
   const [total, setTotal] = useState(0);
   const [token] = state?.token;
+  const emptyCart: any = [];
 
   useEffect(() => {
     const getTotal = async () => {
@@ -22,14 +22,21 @@ export const Cart: React.FC = ({}: Props) => {
     getTotal();
   }, [cart]);
 
-  const addToCart = async () => {
-    await axios.patch(
-      "/user/addcart",
-      { cart },
-      {
-        headers: { Authorization: token },
-      }
-    );
+  const restartCart = async () => {
+    cart.length = 0;
+    setCart(cart);
+    console.log(cart);
+
+    await axios
+      .patch(
+        "/user/addcart",
+        { cart },
+        {
+          headers: { Authorization: token },
+        }
+      )
+      .finally(() => alert("Uspjesno ste zavrsili narudzbu."));
+    window.location.reload();
   };
 
   const tranSuccess = async (payment: any) => {
@@ -43,15 +50,12 @@ export const Cart: React.FC = ({}: Props) => {
           headers: { Authorization: token },
         }
       )
-      .finally(() => {
-        setCart([]);
-        console.log("here");
-        addToCart();
-        alert("Uspjesno ste zavrsili narudzbu.");
+      .finally(async () => {
+        await restartCart();
       });
   };
 
-  console.log(cart);
+  // console.log(cart);
 
   if (cart.length === 0) {
     return <h2>KORPA JE PRAZNA</h2>;
