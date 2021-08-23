@@ -27,7 +27,7 @@ export const PayPal = () => {
     setCart(cart);
     await axios
       .patch(
-        "/user/addcart",
+        "http://localhost:8800/user/addcart",
         { cart },
         {
           headers: { Authorization: token },
@@ -37,14 +37,14 @@ export const PayPal = () => {
   };
 
   const tranSuccess = async (data: any, details: any) => {
-    const { paymentID } = details.id;
+    const { id } = details;
     const { address } = details.payer;
     console.log(token);
 
     await axios
       .post(
         "http://localhost:8800/api/payment",
-        { cart, paymentID, address },
+        { cart, id, address },
         // { cart, paymentID },
         {
           headers: { Authorization: token },
