@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const paymentSchema = new mongoose.Schema(
+const paymentsSchema = new mongoose.Schema(
   {
     user_id: {
       type: String,
@@ -34,4 +34,4 @@ const paymentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Payments", paymentSchema);
+module.exports = mongoose.model("Payments", paymentsSchema);

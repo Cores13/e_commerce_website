@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import { CartItem } from "../../components/cartItem/CartItem";
 import "./Cart.css";
-import PayPalButton from "./PayPalButton";
+import { PayPal } from "./PayPal";
 import axios from "axios";
 
 export const Cart: React.FC = () => {
@@ -10,8 +10,9 @@ export const Cart: React.FC = () => {
   const [cart, setCart] = state?.userAPI?.cart;
   const [total, setTotal] = useState(0);
   const [token] = state?.token;
-  const emptyCart: any = [];
+  // const [checkout, setCheckout] = useState(false);
 
+  // console.log(token);
   useEffect(() => {
     const getTotal = async () => {
       const total = cart.reduce((prev: any, item: any) => {
@@ -25,8 +26,7 @@ export const Cart: React.FC = () => {
   const restartCart = async () => {
     cart.length = 0;
     setCart(cart);
-    console.log(cart);
-
+    console.log("here");
     await axios
       .patch(
         "/user/addcart",
@@ -36,22 +36,29 @@ export const Cart: React.FC = () => {
         }
       )
       .finally(() => alert("Uspjesno ste zavrsili narudzbu."));
-    window.location.reload();
   };
 
   const tranSuccess = async (payment: any) => {
     const { paymentID, address } = payment;
+    console.log(token);
 
     await axios
       .post(
-        "/api/payment",
+        "http://localhost/:8800/api/payment",
         { cart, paymentID, address },
         {
-          headers: { Authorization: token },
+          headers: {
+            Authorization: token,
+            crossDomain: true,
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
+          },
         }
       )
       .finally(async () => {
         await restartCart();
+        window.location.reload();
       });
   };
 
@@ -85,7 +92,14 @@ export const Cart: React.FC = () => {
           <div className='cartRight'>
             <div className='cartRightTop'>Ukupno: {total}</div>
             <div className='cartRightBottom'>
-              <PayPalButton total={total} tranSuccess={tranSuccess} />
+              {/* <PayPalButton
+                total={total}
+                onSuccess={(payment: any) => tranSuccess(payment)}
+                tranSuccess={tranSuccess}
+              /> */}
+              <PayPal />
+
+              {/* <PayPal total={total} tranSuccess={tranSuccess} /> */}
             </div>
           </div>
         </div>

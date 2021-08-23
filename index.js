@@ -14,6 +14,14 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 app.use(
   fileUpload({
     useTempFiles: true,
@@ -38,10 +46,10 @@ mongoose.connect(
 
 // Routes
 app.use("/user", userRouter);
+app.use("/api", paymentRouter);
 app.use("/api", categoryRouter);
 app.use("/api", upload);
 app.use("/api", productRouter);
-app.use("/api", paymentRouter);
 
 // Start a server
 const PORT = process.env.PORT || 5000;

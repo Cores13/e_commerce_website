@@ -54,7 +54,6 @@ export const CartItem: React.FC<IProps> = ({ product }) => {
     }
   };
 
-  console.log(product);
   return (
     <li className='cartItem'>
       <h4 className='cartItemTitle'>{product.title}</h4>
