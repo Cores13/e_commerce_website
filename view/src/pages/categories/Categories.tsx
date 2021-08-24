@@ -11,6 +11,7 @@ export const Categories = (props: Props) => {
   const [token] = state?.token;
   const [categories, setCategories] = state?.categoriesAPI?.categories;
   const [category, setCategory] = useState("");
+  const [callback, setCallback] = state?.categoriesAPI?.callback;
 
   const createCategory = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,7 +21,8 @@ export const Categories = (props: Props) => {
         { name: category },
         { headers: { Authorization: token } }
       );
-      console.log(res);
+      setCategory("");
+      setCallback(!callback);
       alert(res.data);
     } catch (error: any) {
       alert(error.response.data.msg);
