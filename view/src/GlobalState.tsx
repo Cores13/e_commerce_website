@@ -20,6 +20,9 @@ export interface ContextType {
           | any;
         cart: (boolean | React.Dispatch<React.SetStateAction<boolean>>) | any;
         addCart: any;
+        history:
+          | (never[] | React.Dispatch<React.SetStateAction<never[]>>)[]
+          | any;
       }
     | undefined;
 }

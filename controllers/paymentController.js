@@ -31,8 +31,6 @@ const createPayments = async (req, res) => {
       address: address,
     });
 
-    console.log("here");
-    console.log(newPayment);
     await newPayment.save();
     res.json({ msg: "Narudzba uspjesno zavrsena." });
   } catch (error) {

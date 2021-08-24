@@ -7,6 +7,7 @@ import { Landing } from "./pages/landing/Landing";
 import { Login } from "./pages/login/Login";
 import { Products } from "./pages/products/Products";
 import { Register } from "./pages/register/Register";
+import { PaymentHistory } from "./pages/history/PaymentHistory";
 import { NotFound } from "./pages/notFound/NotFound";
 import { ProductDetail } from "./pages/productDetail/ProductDetail";
 
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route exact path='/detail/:id'>
             <ProductDetail />
+          </Route>
+          <Route exact path='/history'>
+            {isLogged ? <PaymentHistory /> : <Login />}
           </Route>
           <Route exact path='*'>
             <NotFound />

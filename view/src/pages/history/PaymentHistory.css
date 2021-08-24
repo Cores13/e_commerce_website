@@ -1,0 +1,41 @@
+.history {
+  padding-top: 90px;
+  width: 100%;
+}
+.historyWrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+.historyTitle {
+  font-size: 2rem;
+}
+.historySubTitle {
+  text-align: left;
+  font-size: 1.3rem;
+}
+.historyOrders {
+  width: 85%;
+  margin: 0 auto;
+}
+.historyTable {
+  width: 100%;
+  margin: 0 auto;
+}
+thead {
+  background-color: var(--green);
+  color: white;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+thead > tr > th {
+  color: white;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+td {
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+tr {
+  border: 1px solid lightgrey;
+}

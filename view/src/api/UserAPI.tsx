@@ -11,8 +11,12 @@ type IState = {
     | (() => (boolean | React.Dispatch<React.SetStateAction<boolean>>)[])
     | boolean;
   cart:
-    | (boolean | React.Dispatch<React.SetStateAction<boolean>>)[]
-    | (() => (boolean | React.Dispatch<React.SetStateAction<boolean>>)[])
+    | (never[] | React.Dispatch<React.SetStateAction<boolean>>)[]
+    | (() => (never[] | React.Dispatch<React.SetStateAction<boolean>>)[])
+    | boolean;
+  history:
+    | (never[] | React.Dispatch<React.SetStateAction<boolean>>)[]
+    | (() => (never[] | React.Dispatch<React.SetStateAction<boolean>>)[])
     | boolean;
 };
 
@@ -20,6 +24,7 @@ export default function UserAPI(token: any) {
   const [isLogged, setIsLogged] = useState<IState["isLogged"]>(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [cart, setCart] = useState<any>([]);
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     if (token) {
@@ -39,6 +44,18 @@ export default function UserAPI(token: any) {
       getUser();
     }
   }, [token, isAdmin]);
+
+  useEffect(() => {
+    if (token) {
+      const getHistory = async () => {
+        const res = await axios.get("/user/history", {
+          headers: { Authorization: token },
+        });
+        setHistory(res.data);
+      };
+      getHistory();
+    }
+  }, [token]);
 
   const addCart = async (product: any) => {
     if (!isLogged) return alert("Molimo prijavite se.");
@@ -68,6 +85,7 @@ export default function UserAPI(token: any) {
       isAdmin: [isAdmin, setIsAdmin],
       cart: [cart, setCart],
       addCart: addCart,
+      history: [history, setHistory],
     };
   } catch (error) {
     alert(error);

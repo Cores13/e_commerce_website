@@ -10,9 +10,7 @@ export const Cart: React.FC = () => {
   const [cart, setCart] = state?.userAPI?.cart;
   const [total, setTotal] = useState(0);
   const [token] = state?.token;
-  // const [checkout, setCheckout] = useState(false);
 
-  // console.log(token);
   useEffect(() => {
     const getTotal = async () => {
       const total = cart.reduce((prev: any, item: any) => {
@@ -23,49 +21,8 @@ export const Cart: React.FC = () => {
     getTotal();
   }, [cart]);
 
-  const restartCart = async () => {
-    cart.length = 0;
-    setCart(cart);
-    console.log("here");
-    await axios
-      .patch(
-        "/user/addcart",
-        { cart },
-        {
-          headers: { Authorization: token },
-        }
-      )
-      .finally(() => alert("Uspjesno ste zavrsili narudzbu."));
-  };
-
-  const tranSuccess = async (payment: any) => {
-    const { paymentID, address } = payment;
-    console.log(token);
-
-    await axios
-      .post(
-        "http://localhost/:8800/api/payment",
-        { cart, paymentID, address },
-        {
-          headers: {
-            Authorization: token,
-            crossDomain: true,
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
-          },
-        }
-      )
-      .finally(async () => {
-        await restartCart();
-        window.location.reload();
-      });
-  };
-
-  // console.log(cart);
-
   if (cart.length === 0) {
-    return <h2>KORPA JE PRAZNA</h2>;
+    return <h2 className='emptyCart'>KORPA JE PRAZNA</h2>;
   }
 
   return (

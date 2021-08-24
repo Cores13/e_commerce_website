@@ -1,3 +1,7 @@
+.emptyCart {
+  padding-top: 90px;
+  font-size: 3rem;
+}
 .cartWrapper {
   width: 100vw;
   height: 100vh;
