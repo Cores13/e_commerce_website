@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import ProductsAPI from "./api/ProductsAPI";
 import UserAPI from "./api/UserAPI";
+import CategoriesAPI from "./api/CategoriesAPI";
 
 export interface ContextType {
   token: (boolean | React.Dispatch<React.SetStateAction<boolean>>)[] | any;
@@ -28,6 +29,13 @@ export interface ContextType {
           | any;
       }
     | undefined;
+  categoriesAPI:
+    | {
+        categories:
+          | (never[] | React.Dispatch<React.SetStateAction<never[]>>)[]
+          | any;
+      }
+    | undefined;
 }
 
 export const GlobalState = createContext<ContextType | undefined>(undefined);
@@ -51,6 +59,7 @@ export const DataProvider: React.FC = ({ children }) => {
     token: [token, setToken],
     productsAPI: ProductsAPI(),
     userAPI: UserAPI(token),
+    categoriesAPI: CategoriesAPI(token),
   };
 
   return <GlobalState.Provider value={state}>{children}</GlobalState.Provider>;

@@ -11,12 +11,14 @@ import { PaymentHistory } from "./pages/history/PaymentHistory";
 import { PaymentDetail } from "./pages/history/PaymentDetail";
 import { NotFound } from "./pages/notFound/NotFound";
 import { ProductDetail } from "./pages/productDetail/ProductDetail";
+import { Categories } from "./pages/categories/Categories";
 
 import "./App.css";
 
 function App() {
   const state = useContext(GlobalState);
   const [isLogged] = state?.userAPI?.isLogged;
+  const [isAdmin] = state?.userAPI?.isAdmin;
 
   // TODO: ADDRESS
 
@@ -48,6 +50,9 @@ function App() {
           </Route>
           <Route exact path='/history/:id'>
             {isLogged ? <PaymentDetail /> : <Login />}
+          </Route>
+          <Route exact path='/category'>
+            {isAdmin ? <Categories /> : <Login />}
           </Route>
           <Route exact path='*'>
             <NotFound />

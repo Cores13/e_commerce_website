@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-
 type IState = {
   isLogged:
     | (boolean | React.Dispatch<React.SetStateAction<boolean>>)[]
