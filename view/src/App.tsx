@@ -8,6 +8,7 @@ import { Login } from "./pages/login/Login";
 import { Products } from "./pages/products/Products";
 import { Register } from "./pages/register/Register";
 import { PaymentHistory } from "./pages/history/PaymentHistory";
+import { PaymentDetail } from "./pages/history/PaymentDetail";
 import { NotFound } from "./pages/notFound/NotFound";
 import { ProductDetail } from "./pages/productDetail/ProductDetail";
 
@@ -16,10 +17,10 @@ import "./App.css";
 function App() {
   const state = useContext(GlobalState);
   const [isLogged] = state?.userAPI?.isLogged;
-  // const [isAdmin, setIsAdmin] = state?.userAPI?.isAdmin;
+
+  // TODO: ADDRESS
 
   return (
-    // <DataProvider>
     <Router>
       <div className='App'>
         <Navbar />
@@ -45,13 +46,15 @@ function App() {
           <Route exact path='/history'>
             {isLogged ? <PaymentHistory /> : <Login />}
           </Route>
+          <Route exact path='/history/:id'>
+            {isLogged ? <PaymentDetail /> : <Login />}
+          </Route>
           <Route exact path='*'>
             <NotFound />
           </Route>
         </Switch>
       </div>
     </Router>
-    // </DataProvider>
   );
 }
 

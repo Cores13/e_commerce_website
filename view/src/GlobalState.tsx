@@ -23,6 +23,9 @@ export interface ContextType {
         history:
           | (never[] | React.Dispatch<React.SetStateAction<never[]>>)[]
           | any;
+        callback:
+          | (boolean | React.Dispatch<React.SetStateAction<boolean>>)
+          | any;
       }
     | undefined;
 }

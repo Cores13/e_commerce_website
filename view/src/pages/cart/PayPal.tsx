@@ -10,6 +10,7 @@ export const PayPal = () => {
   const [cart, setCart] = state?.userAPI?.cart;
   const [total, setTotal] = useState(0);
   const [token] = state?.token;
+  const [callback, setCallback] = state?.userAPI?.callback;
 
   useEffect(() => {
     const getTotal = async () => {
@@ -32,13 +33,16 @@ export const PayPal = () => {
           headers: { Authorization: token },
         }
       )
-      .then(() => alert("Uspjesno ste zavrsili narudzbu."));
+      .then(() => {
+        alert("Uspjesno ste zavrsili narudzbu.");
+        setCallback(!callback);
+      });
   };
 
   const tranSuccess = async (data: any, details: any) => {
     const { id } = details;
+    // TODO ADDRESS
     const { address } = details.payer;
-
     await axios
       .post(
         "http://localhost:8800/api/payment",
@@ -58,6 +62,7 @@ export const PayPal = () => {
       amount={total}
       currency='EUR'
       onSuccess={async (details: any, data: any) => {
+        console.log(details);
         tranSuccess(data, details);
       }}
     />

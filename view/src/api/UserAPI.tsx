@@ -18,6 +18,10 @@ type IState = {
     | (never[] | React.Dispatch<React.SetStateAction<boolean>>)[]
     | (() => (never[] | React.Dispatch<React.SetStateAction<boolean>>)[])
     | boolean;
+  callback:
+    | (boolean | React.Dispatch<React.SetStateAction<boolean>>)[]
+    | (() => (boolean | React.Dispatch<React.SetStateAction<boolean>>)[])
+    | boolean;
 };
 
 export default function UserAPI(token: any) {
@@ -25,6 +29,7 @@ export default function UserAPI(token: any) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [cart, setCart] = useState<any>([]);
   const [history, setHistory] = useState([]);
+  const [callback, setCallback] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -55,7 +60,7 @@ export default function UserAPI(token: any) {
       };
       getHistory();
     }
-  }, [token]);
+  }, [token, callback]);
 
   const addCart = async (product: any) => {
     if (!isLogged) return alert("Molimo prijavite se.");
@@ -67,8 +72,8 @@ export default function UserAPI(token: any) {
     if (check) {
       setCart([...cart, { ...product, quantity: 1 }]);
 
-      await axios.patch(
-        "/user/addcart",
+      await axios.put(
+        "http://localhost:8800/user/addcart",
         {
           cart: [...cart, { ...product, quantity: 1 }],
         },
@@ -86,6 +91,7 @@ export default function UserAPI(token: any) {
       cart: [cart, setCart],
       addCart: addCart,
       history: [history, setHistory],
+      callback: [callback, setCallback],
     };
   } catch (error) {
     alert(error);

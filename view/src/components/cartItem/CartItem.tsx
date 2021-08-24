@@ -14,8 +14,8 @@ export const CartItem: React.FC<IProps> = ({ product }) => {
   const [token] = state?.token;
 
   const addToCart = async () => {
-    await axios.patch(
-      "/user/addcart",
+    await axios.put(
+      "http://localhost:8800/user/addcart",
       { cart },
       {
         headers: { Authorization: token },

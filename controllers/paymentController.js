@@ -17,9 +17,8 @@ const createPayments = async (req, res) => {
     if (!user) {
       return res.status(400).json({ msg: "Korisnik ne postoji." });
     }
-
+    // TODO: ADDRESS
     const { cart, id, address } = req.body;
-    // const { cart, paymentID } = req.body;
     const { _id, name, email } = user;
 
     const newPayment = new Payments({
