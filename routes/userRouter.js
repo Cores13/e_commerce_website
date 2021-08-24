@@ -7,6 +7,6 @@ router.post("/login", userController.login);
 router.post("/logout", userController.logout);
 router.get("/refresh_token", userController.refreshToken);
 router.get("/info", auth, userController.getUser);
-router.patch("/addcart", auth, userController.addCart);
+router.put("/addcart", auth, userController.addCart);
 
 module.exports = router;

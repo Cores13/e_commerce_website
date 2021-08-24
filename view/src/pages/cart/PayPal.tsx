@@ -26,7 +26,7 @@ export const PayPal = () => {
     cart.length = 0;
     setCart(cart);
     await axios
-      .patch(
+      .put(
         "http://localhost:8800/user/addcart",
         { cart },
         {
@@ -51,7 +51,7 @@ export const PayPal = () => {
       )
       .then(() => {
         restartCart();
-        // window.location.reload();
+        window.location.reload();
       });
   };
 
