@@ -38,8 +38,7 @@ export const PaymentDetail: React.FC = () => {
   return (
     <div className='historyDetail'>
       <div className='historyDetailWrapper'>
-        <h2 className='historyDetailTitle'>Historija narudzbe</h2>
-        {/* <h4 className='historyDetailSubTitle'>Narucili ste:</h4> */}
+        <h2 className='historyDetailTitle'>Detalji narudzbe</h2>
 
         <div className='historyDetailOrders'>
           <table className='historyDetailTable'>
@@ -56,6 +55,34 @@ export const PaymentDetail: React.FC = () => {
                 <td>{`${paymentDetails.address.address_line_1},${paymentDetails.address.admin_area_2}`}</td>
                 <td>{paymentDetails.address.postal_code}</td>
               </tr>
+            </tbody>
+          </table>
+          <table className='historyDetailTable'>
+            <thead>
+              <tr>
+                <th></th>
+                <th>PROIZVOD</th>
+                <th>KOLICINA</th>
+                <th>CIJENA</th>
+              </tr>
+            </thead>
+            <tbody>
+              {paymentDetails.cart.map((item: any) => {
+                return (
+                  <tr key={item._id}>
+                    <td>
+                      <img
+                        className='historyDetailImg'
+                        src={item.images.url}
+                        alt='Slika proizvoda'
+                      />
+                    </td>
+                    <td>{item.title}</td>
+                    <td>{item.quantity}</td>
+                    <td>{item.price * item.quantity} KM</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

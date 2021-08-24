@@ -53,14 +53,21 @@ export default function UserAPI(token: any) {
   useEffect(() => {
     if (token) {
       const getHistory = async () => {
-        const res = await axios.get("/user/history", {
-          headers: { Authorization: token },
-        });
-        setHistory(res.data);
+        if (isAdmin) {
+          const res = await axios.get("/api/payment", {
+            headers: { Authorization: token },
+          });
+          setHistory(res.data);
+        } else {
+          const res = await axios.get("/user/history", {
+            headers: { Authorization: token },
+          });
+          setHistory(res.data);
+        }
       };
       getHistory();
     }
-  }, [token, callback]);
+  }, [token, callback, isAdmin]);
 
   const addCart = async (product: any) => {
     if (!isLogged) return alert("Molimo prijavite se.");

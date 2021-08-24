@@ -15,8 +15,10 @@ export const PayPal = () => {
   useEffect(() => {
     const getTotal = async () => {
       const total = cart.reduce((prev: any, item: any) => {
-        return prev + item.price * item.quantity;
+        return (prev + item.price * item.quantity) * 0.51;
       }, 0);
+      const totalEur = total;
+      console.log(total);
       setTotal(total);
     };
     getTotal();

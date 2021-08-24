@@ -18,8 +18,8 @@
   padding-left: 25px;
   padding-right: 25px;
   width: 95%;
-  margin: 0 auto;
-  margin-top: 120px;
+  margin: 120px auto;
+  margin-bottom: 50px;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
 }
