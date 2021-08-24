@@ -45,14 +45,13 @@ export const PayPal = () => {
       .post(
         "http://localhost:8800/api/payment",
         { cart, id, address },
-        // { cart, paymentID },
         {
           headers: { Authorization: token },
         }
       )
       .then(() => {
         restartCart();
-        window.location.reload();
+        // window.location.reload();
       });
   };
 
@@ -60,24 +59,11 @@ export const PayPal = () => {
   return (
     <PayPalButton
       amount={total}
-      // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+      currency='EUR'
       onSuccess={async (details: any, data: any) => {
         console.log(data);
         console.log(details);
         tranSuccess(data, details);
-        // alert("Transaction completed by " + details.payer.name.given_name);
-
-        // OPTIONAL: Call your server to save the transaction
-        // return window.location.reload();
-        // return fetch("/api/payment", {
-        //   method: "post",
-        //   body: JSON.stringify({
-        //     cart: cart,
-        //     paymentID: data.paymentID,
-        //     address: data.address,
-        //   }),
-        //   headers: JSON.stringify({ Authorization: token }),
-        // });
       }}
     />
   );
