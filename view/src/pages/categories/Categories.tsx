@@ -70,41 +70,49 @@ export const Categories = (props: Props) => {
   return (
     <div className='categories'>
       <div className='categoriesWrapper'>
-        <form onSubmit={createCategory}>
-          <label htmlFor='category'>Naziv kategorije:</label>
-          <input
-            type='text'
-            name='category'
-            placeholder='Kategorija'
-            value={category}
-            required
-            onChange={(e) => setCategory(e.target.value)}
-          />
+        <div className='categoriesTop'>
+          <h1 className='categoriesTitle'>Kategorije</h1>
+        </div>
+        <div className='categoriesBot'>
+          <div className='categoriesBotLeft'>
+            <h2 className='categoriesCreateTitle'>Kreiraj kategoriju</h2>
+            <form onSubmit={createCategory} className='categoriesForm'>
+              <label htmlFor='category'>Naziv kategorije:</label>
+              <input
+                type='text'
+                name='category'
+                placeholder='Kategorija'
+                value={category}
+                required
+                onChange={(e) => setCategory(e.target.value)}
+              />
 
-          <button type='submit'>
-            {onEdit ? "Sacuvaj izmjene" : "Sacuvaj"}
-          </button>
-        </form>
-        <div className='categoriesCol'>
-          {categories.map((category: any) => {
-            return (
-              <div className='categoriesRow' key={category._id}>
-                <p>{category.name}</p>
-                <div className='categoriesRowButtons'>
-                  <button
-                    className='categoriesEditBtn'
-                    onClick={() => editCategory(category._id, category.name)}>
-                    Uredi
-                  </button>
-                  <button
-                    className='categoriesDeleteBtn'
-                    onClick={() => deleteCategory(category._id)}>
-                    Izbrisi
-                  </button>
+              <button type='submit'>
+                {onEdit ? "Sacuvaj izmjene" : "Kreiraj"}
+              </button>
+            </form>
+          </div>
+          <div className='categoriesCol'>
+            {categories.map((category: any) => {
+              return (
+                <div className='categoriesRow' key={category._id}>
+                  <p>{category.name}</p>
+                  <div className='categoriesRowButtons'>
+                    <button
+                      className='categoriesEditBtn'
+                      onClick={() => editCategory(category._id, category.name)}>
+                      Uredi
+                    </button>
+                    <button
+                      className='categoriesDeleteBtn'
+                      onClick={() => deleteCategory(category._id)}>
+                      Izbrisi
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

@@ -51,7 +51,7 @@ export const DataProvider: React.FC = ({ children }) => {
 
       setTimeout(() => {
         refreshToken();
-      }, 15000);
+      }, 10 * 60 * 1000);
     };
 
     refreshToken();

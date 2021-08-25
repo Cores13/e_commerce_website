@@ -1,0 +1,125 @@
+.createProduct {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    url("../../images/products_bg.jfif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  overflow-x: hidden;
+}
+.createProductWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 120px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 25px;
+  width: 90%;
+  color: white;
+}
+.upload {
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; */
+  max-width: 300px;
+  min-height: 300px;
+  height: 300px;
+  width: 100%;
+  padding: 10px;
+  margin: 25px;
+  position: relative;
+}
+.createProductFileUpload {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+.createProductFileUpload::before {
+  content: "+";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0px;
+  left: 0px;
+  background: rgb(46, 46, 46);
+  color: rgb(87, 87, 87);
+  font-size: 10rem;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  outline: none;
+}
+#file_img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.createProductImgLabel {
+  color: white;
+  background: none;
+  font-size: 2rem;
+  position: absolute;
+  top: -45px;
+  left: 0;
+}
+.createProductImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#file_img > span {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+  background-color: white;
+  padding: 1px 7px;
+  border-radius: 50%;
+}
+.createProductForm {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-evenly;
+  min-width: 320px;
+  height: 100%;
+}
+.createProductFormRow {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  margin: 10px;
+}
+.createProductFormRow > label {
+  font-size: 1.2rem;
+}
+.createProductFormRow > input,
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
