@@ -144,6 +144,7 @@ export const Navbar: React.FC = () => {
 
   const logoutUser = async () => {
     await axios.post("/user/logout");
+    localStorage.removeItem("firstLogin");
     setIsAdmin(false);
     setIsLogged(false);
     window.location.reload();

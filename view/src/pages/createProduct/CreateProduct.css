@@ -18,7 +18,7 @@
 }
 .createProductWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
@@ -30,12 +30,19 @@
   width: 90%;
   color: white;
 }
-.upload {
-  /* display: flex;
-  flex-wrap: wrap;
+.createProductTitle {
+  text-align: center;
+  font-size: 2.5rem;
+}
+.createProductBot {
+  display: flex;
   flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center; */
+  width: 100%;
+  margin: 0 auto;
+}
+.upload {
   max-width: 300px;
   min-height: 300px;
   height: 300px;
@@ -122,4 +129,16 @@ select {
   padding: 10px;
   border-radius: 5px;
   border: none;
+}
+.createProductBtn {
+  background: var(--green);
+  padding: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }

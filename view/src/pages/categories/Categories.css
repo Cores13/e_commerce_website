@@ -41,6 +41,9 @@
   text-align: center;
   font-size: 2.5rem;
 }
+.categoriesCreateTitle {
+  margin-bottom: 15px;
+}
 .categoriesBot {
   display: flex;
   flex-direction: row;
@@ -49,6 +52,9 @@
   width: 100%;
 }
 .categoriesBotLeft {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   background: rgba(0, 0, 0, 0.7);
   padding: 15px;
   border-radius: 5px;
