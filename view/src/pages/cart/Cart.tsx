@@ -3,13 +3,11 @@ import { GlobalState } from "../../GlobalState";
 import { CartItem } from "../../components/cartItem/CartItem";
 import "./Cart.css";
 import { PayPal } from "./PayPal";
-import axios from "axios";
 
 export const Cart: React.FC = () => {
   const state = useContext(GlobalState);
-  const [cart, setCart] = state?.userAPI?.cart;
+  const [cart] = state?.userAPI?.cart;
   const [total, setTotal] = useState(0);
-  const [token] = state?.token;
 
   useEffect(() => {
     const getTotal = async () => {

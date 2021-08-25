@@ -1,17 +1,14 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
-interface Props {}
 
-export const Register: React.FC = ({}: Props) => {
+export const Register: React.FC = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const yes = "true";
-  const no = "false";
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;

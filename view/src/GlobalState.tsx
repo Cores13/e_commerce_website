@@ -48,7 +48,12 @@ export const DataProvider: React.FC = ({ children }) => {
       const res = await axios.get("/user/refresh_token");
 
       setToken(res.data.accesstoken);
+
+      setTimeout(() => {
+        refreshToken();
+      }, 15000);
     };
+
     refreshToken();
   }, []);
 

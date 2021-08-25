@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./PaymentHistory.css";
 import { GlobalState } from "../../GlobalState";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import axios from "axios";
 export const PaymentHistory: React.FC = () => {
   const state = useContext(GlobalState);
   const [history, setHistory] = state?.userAPI?.history;
-  const [isAdmin, setIsAdmin] = state?.userAPI?.isAdmin;
+  const [isAdmin] = state?.userAPI?.isAdmin;
   const [token] = state?.token;
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const PaymentHistory: React.FC = () => {
       };
       getHistory();
     }
-  }, [token, isAdmin]);
+  }, [token, isAdmin, setHistory]);
 
   console.log(history);
   return (

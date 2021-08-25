@@ -8,7 +8,7 @@ interface Props {}
 export const Categories = (props: Props) => {
   const state = useContext(GlobalState);
   const [token] = state?.token;
-  const [categories, setCategories] = state?.categoriesAPI?.categories;
+  const [categories] = state?.categoriesAPI?.categories;
   const [category, setCategory] = useState("");
   const [callback, setCallback] = state?.categoriesAPI?.callback;
   const [onEdit, setOnEdit] = useState(false);

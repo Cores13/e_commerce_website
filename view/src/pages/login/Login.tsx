@@ -8,7 +8,6 @@ export const Login: React.FC = () => {
     email: "",
     password: "",
   });
-  const yes = "true";
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;

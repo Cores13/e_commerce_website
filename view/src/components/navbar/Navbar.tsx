@@ -100,7 +100,7 @@ export const Navbar: React.FC = () => {
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state?.userAPI?.isLogged;
   const [isAdmin, setIsAdmin] = state?.userAPI?.isAdmin;
-  const [cart, setCart] = state?.userAPI?.cart;
+  const [cart] = state?.userAPI?.cart;
 
   const adminRouter = () => {
     return (
@@ -144,7 +144,6 @@ export const Navbar: React.FC = () => {
 
   const logoutUser = async () => {
     await axios.post("/user/logout");
-    localStorage.clear();
     setIsAdmin(false);
     setIsLogged(false);
     window.location.reload();

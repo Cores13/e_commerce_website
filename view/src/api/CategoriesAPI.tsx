@@ -13,7 +13,7 @@ export default function CategoriesAPI(token: any) {
       setCategories(res.data);
     };
     getCategories();
-  }, [callback]);
+  }, [callback, token]);
   return {
     categories: [categories, setCategories],
     callback: [callback, setCallback],
