@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { GlobalState } from "../../GlobalState";
 import "./CreateProduct.css";
-import { Loading } from "../../components/loading/Loading";
+import { ImageLoading } from "../../components/loading/ImageLoading";
 
 const initialState = {
   product_id: "",
@@ -18,10 +18,52 @@ export const CreateProduct = () => {
   const [product, setProduct] = useState(initialState);
   const [categories] = state?.categoriesAPI?.categories;
   const [images, setImages] = useState(false);
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isAdmin] = state?.userAPI?.isAdmin;
+  const [token] = state?.token;
 
   const styleUpload = {
     display: images ? "block" : "none",
+  };
+
+  const handleUpload = async (e: any) => {
+    e.preventDefault();
+    try {
+      if (!isAdmin) {
+        return alert("Niste admin!");
+      }
+      const file = e.target.files[0];
+      if (!file) {
+        return alert("Fotografija koju ste odabrali ne postoji.");
+      }
+      if (file.size > 1024 * 1024) {
+        return alert("Fotografija koju ste odabrali je prevelika.");
+      }
+      if (
+        file.type !== "image/jpeg" &&
+        file.type !== "image/jpg" &&
+        file.type !== "image/png"
+      ) {
+        return alert("Neispravan format fotografije.");
+      }
+      let formData = new FormData();
+      formData.append("file", file);
+
+      setLoading(true);
+
+      const res = await axios.post("/api/upload", formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: token,
+        },
+      });
+      setImage(res.data.url);
+      setImages(true);
+      setLoading(false);
+    } catch (error: any) {
+      alert(error.response.data.msg);
+    }
   };
 
   return (
@@ -40,14 +82,25 @@ export const CreateProduct = () => {
               name='file'
               id='file_up'
               className='createProductFileUpload'
+              onChange={(e) => handleUpload(e)}
             />
-            <div
-              className='createProductImgDiv'
-              id='file_img'
-              style={styleUpload}>
-              <img src='' alt='' className='createProductImg' />
-              <span>X</span>
-            </div>
+            {loading ? (
+              <div className='createProductImgDiv' id='file_img'>
+                <ImageLoading />
+              </div>
+            ) : (
+              <div
+                className='createProductImgDiv'
+                id='file_img'
+                style={styleUpload}>
+                <img
+                  src={images ? `${image}` : ""}
+                  alt=''
+                  className='createProductImg'
+                />
+                <span>X</span>
+              </div>
+            )}
           </div>
 
           <form className='createProductForm'>

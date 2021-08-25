@@ -1,9 +1,9 @@
 import React from "react";
-import "./Loading.css";
+import "./ImageLoading.css";
 
-export const Loading: React.FC = () => {
+export const ImageLoading: React.FC = () => {
   return (
-    <div className='loading'>
+    <div className='imageLoading'>
       <svg className='fish' id='fish'>
         <path
           id='fish2'
