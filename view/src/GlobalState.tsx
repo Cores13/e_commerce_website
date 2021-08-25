@@ -24,9 +24,6 @@ export interface ContextType {
         history:
           | (never[] | React.Dispatch<React.SetStateAction<never[]>>)[]
           | any;
-        callback:
-          | (boolean | React.Dispatch<React.SetStateAction<boolean>>)
-          | any;
       }
     | undefined;
   categoriesAPI:
@@ -46,15 +43,13 @@ export const GlobalState = createContext<ContextType | undefined>(undefined);
 export const DataProvider: React.FC = ({ children }) => {
   const [token, setToken] = useState(false);
 
-  const refreshToken = async () => {
-    const res = await axios.get("/user/refresh_token");
-
-    setToken(res.data.accesstoken);
-  };
-
   useEffect(() => {
-    const firstLogin = localStorage.getItem("firstLogin");
-    if (firstLogin) refreshToken();
+    const refreshToken = async () => {
+      const res = await axios.get("/user/refresh_token");
+
+      setToken(res.data.accesstoken);
+    };
+    refreshToken();
   }, []);
 
   ProductsAPI();

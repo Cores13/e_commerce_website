@@ -1,11 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./PaymentHistory.css";
 import { GlobalState } from "../../GlobalState";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const PaymentHistory: React.FC = () => {
   const state = useContext(GlobalState);
-  const [history] = state?.userAPI?.history;
+  const [history, setHistory] = state?.userAPI?.history;
+  const [isAdmin, setIsAdmin] = state?.userAPI?.isAdmin;
+  const [token] = state?.token;
+
+  useEffect(() => {
+    if (token) {
+      const getHistory = async () => {
+        if (isAdmin) {
+          const res = await axios.get("/api/payment", {
+            headers: { Authorization: token },
+          });
+          setHistory(res.data);
+        } else {
+          const res = await axios.get("/user/history", {
+            headers: { Authorization: token },
+          });
+          setHistory(res.data);
+        }
+      };
+      getHistory();
+    }
+  }, [token, isAdmin]);
 
   console.log(history);
   return (

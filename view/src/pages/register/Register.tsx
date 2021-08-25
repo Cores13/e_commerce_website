@@ -21,9 +21,7 @@ export const Register: React.FC = ({}: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const loginInfo = await axios.post("/user/register", { ...user });
-
-      localStorage.setItem("firstLogin", JSON.parse(yes));
+      await axios.post("/user/register", { ...user });
 
       window.location.href = "/";
     } catch (error: any) {

@@ -20,8 +20,6 @@ export const Login: React.FC = () => {
     try {
       await axios.post("/user/login", { ...user });
 
-      localStorage.setItem("firstLogin", JSON.parse(yes));
-
       window.location.href = "/";
     } catch (error: any) {
       alert(error.response.data.msg);
