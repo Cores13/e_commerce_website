@@ -12,7 +12,7 @@ import { PaymentDetail } from "./pages/history/PaymentDetail";
 import { NotFound } from "./pages/notFound/NotFound";
 import { ProductDetail } from "./pages/productDetail/ProductDetail";
 import { Categories } from "./pages/categories/Categories";
-
+import { CreateProduct } from "./pages/createProduct/CreateProduct";
 import "./App.css";
 
 function App() {
@@ -53,6 +53,9 @@ function App() {
           </Route>
           <Route exact path='/category'>
             {isAdmin ? <Categories /> : <Login />}
+          </Route>
+          <Route exact path='/create_product'>
+            {isAdmin ? <CreateProduct /> : <Login />}
           </Route>
           <Route exact path='*'>
             <NotFound />
