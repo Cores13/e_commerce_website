@@ -13,12 +13,22 @@ const initialState = {
   category: "",
 };
 
-export const CreateProduct = () => {
+type IProps = {
+  image:
+    | {
+        public_id: string;
+        url: string;
+      }
+    | any;
+  //   image: any;
+};
+
+export const CreateProduct: React.FC<IProps> = () => {
   const state = useContext(GlobalState);
   const [product, setProduct] = useState(initialState);
   const [categories] = state?.categoriesAPI?.categories;
   const [images, setImages] = useState(false);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState({ url: "", public_id: "" });
   const [loading, setLoading] = useState(false);
   const [isAdmin] = state?.userAPI?.isAdmin;
   const [token] = state?.token;
@@ -58,12 +68,27 @@ export const CreateProduct = () => {
           Authorization: token,
         },
       });
-      setImage(res.data.url);
+      setImage(res.data);
       setImages(true);
       setLoading(false);
     } catch (error: any) {
       alert(error.response.data.msg);
     }
+  };
+
+  const handleDestroy = async () => {
+    try {
+      if (!isAdmin) {
+        return alert("Niste admin!");
+      }
+      await axios.delete(
+        "/api/destroy",
+        { public_id: image.public_id },
+        {
+          headers: { Authorization: token },
+        }
+      );
+    } catch (error) {}
   };
 
   return (
@@ -94,11 +119,11 @@ export const CreateProduct = () => {
                 id='file_img'
                 style={styleUpload}>
                 <img
-                  src={images ? `${image}` : ""}
+                  src={images ? `${image.url}` : ""}
                   alt=''
                   className='createProductImg'
                 />
-                <span>X</span>
+                <span onClick={handleDestroy}>X</span>
               </div>
             )}
           </div>
