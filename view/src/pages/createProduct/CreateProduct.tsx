@@ -81,7 +81,7 @@ export const CreateProduct: React.FC<IProps> = () => {
       if (!isAdmin) {
         return alert("Niste admin!");
       }
-      await axios.delete(
+      await axios.post(
         "/api/destroy",
         { public_id: image.public_id },
         {
