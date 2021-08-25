@@ -21,7 +21,7 @@ const createCategory = async (req, res) => {
     const newCategory = new Category({ name });
 
     await newCategory.save();
-    res.json("Kategorija uspjesno kreirana.");
+    res.json({ msg: "Kategorija uspjesno kreirana." });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }

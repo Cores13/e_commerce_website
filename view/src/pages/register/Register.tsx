@@ -18,7 +18,7 @@ export const Register: React.FC = ({}: Props) => {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const loginInfo = await axios.post("/user/register", { ...user });
