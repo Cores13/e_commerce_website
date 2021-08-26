@@ -18,6 +18,7 @@ nav {
     rgba(0, 0, 0, 0.5) 0%,
     rgba(0, 0, 0, 0.7) 100%
   );
+  z-index: 999;
 }
 .menu {
   display: none;

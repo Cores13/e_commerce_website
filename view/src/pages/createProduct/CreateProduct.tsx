@@ -3,6 +3,7 @@ import axios from "axios";
 import { GlobalState } from "../../GlobalState";
 import "./CreateProduct.css";
 import { ImageLoading } from "../../components/loading/ImageLoading";
+import { useHistory } from "react-router-dom";
 
 const initialState = {
   product_id: "",
@@ -32,6 +33,7 @@ export const CreateProduct: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [isAdmin] = state?.userAPI?.isAdmin;
   const [token] = state?.token;
+  const history = useHistory();
 
   const styleUpload = {
     display: images ? "block" : "none",
@@ -132,6 +134,7 @@ export const CreateProduct: React.FC = () => {
 
       setProduct(initialState);
       setImages(false);
+      history.push("/");
     } catch (error: any) {
       alert(error.response.data.msg);
     }
