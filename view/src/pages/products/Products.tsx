@@ -78,7 +78,7 @@ export const Products: React.FC = () => {
           </span>
 
           <span className='productsMenuDeleteAll navLink' onClick={deleteAll}>
-            IZBRISI SVE
+            IZBRISI OZNACENO
           </span>
         </div>
         <div className='products'>
