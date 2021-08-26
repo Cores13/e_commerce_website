@@ -13,22 +13,22 @@ const initialState = {
   category: "",
 };
 
-type IProps = {
-  image:
-    | {
-        public_id: string;
-        url: string;
-      }
-    | any;
-  //   image: any;
+type IType = {
+  image: {
+    public_id: string;
+    url: string;
+  } | null;
 };
 
-export const CreateProduct: React.FC<IProps> = () => {
+export const CreateProduct: React.FC = () => {
   const state = useContext(GlobalState);
   const [product, setProduct] = useState(initialState);
   const [categories] = state?.categoriesAPI?.categories;
   const [images, setImages] = useState(false);
-  const [image, setImage] = useState({ url: "", public_id: "" });
+  const [image, setImage] = useState<IType["image"]>({
+    url: "",
+    public_id: "",
+  });
   const [loading, setLoading] = useState(false);
   const [isAdmin] = state?.userAPI?.isAdmin;
   const [token] = state?.token;
@@ -83,12 +83,58 @@ export const CreateProduct: React.FC<IProps> = () => {
       }
       await axios.post(
         "/api/destroy",
-        { public_id: image.public_id },
+        { public_id: image?.public_id },
         {
           headers: { Authorization: token },
         }
       );
-    } catch (error) {}
+      setImages(false);
+      setImage(null);
+      setLoading(false);
+    } catch (error: any) {
+      alert(error.response.data.msg);
+    }
+  };
+
+  const handleChangeInput = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    e.preventDefault();
+
+    try {
+      const { name, value } = e.currentTarget;
+      setProduct({ ...product, [name]: value });
+      console.log(product);
+    } catch (error: any) {
+      alert(error.response.data.msg);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      if (!isAdmin) {
+        return alert("Niste admin!");
+      }
+      if (!image) {
+        return alert("Niste odabrali fotografiju!");
+      }
+      await axios.post(
+        "/api/products",
+        { ...product, images: image },
+        {
+          headers: { Authorization: token },
+        }
+      );
+
+      setProduct(initialState);
+      setImages(false);
+    } catch (error: any) {
+      alert(error.response.data.msg);
+    }
   };
 
   return (
@@ -119,7 +165,7 @@ export const CreateProduct: React.FC<IProps> = () => {
                 id='file_img'
                 style={styleUpload}>
                 <img
-                  src={images ? `${image.url}` : ""}
+                  src={images ? `${image?.url}` : ""}
                   alt=''
                   className='createProductImg'
                 />
@@ -128,7 +174,7 @@ export const CreateProduct: React.FC<IProps> = () => {
             )}
           </div>
 
-          <form className='createProductForm'>
+          <form className='createProductForm' onSubmit={handleSubmit}>
             <div className='createProductFormRow'>
               <label htmlFor='product_id'>ID Proizvoda:</label>
               <input
@@ -137,6 +183,7 @@ export const CreateProduct: React.FC<IProps> = () => {
                 id='product_id'
                 required
                 value={product.product_id}
+                onChange={handleChangeInput}
               />
             </div>
             <div className='createProductFormRow'>
@@ -147,6 +194,7 @@ export const CreateProduct: React.FC<IProps> = () => {
                 id='title'
                 required
                 value={product.title}
+                onChange={handleChangeInput}
               />
             </div>
             <div className='createProductFormRow'>
@@ -157,6 +205,7 @@ export const CreateProduct: React.FC<IProps> = () => {
                 id='price'
                 required
                 value={product.price}
+                onChange={handleChangeInput}
               />
             </div>
             <div className='createProductFormRow'>
@@ -167,6 +216,7 @@ export const CreateProduct: React.FC<IProps> = () => {
                 rows={5}
                 required
                 value={product.description}
+                onChange={handleChangeInput}
               />
             </div>
             <div className='createProductFormRow'>
@@ -177,14 +227,16 @@ export const CreateProduct: React.FC<IProps> = () => {
                 rows={7}
                 required
                 value={product.content}
+                onChange={handleChangeInput}
               />
             </div>
             <div className='createProductFormRow'>
               <label htmlFor='categories'>Kategorija:</label>
               <select
-                name='categories'
-                id='categories'
-                value={product.category}>
+                name='category'
+                id='category'
+                value={product.category}
+                onChange={handleChangeInput}>
                 <option value=''>Izaberite kategoriju</option>
                 {categories.map((category: any) => {
                   return (
