@@ -29,7 +29,6 @@ export interface IState {
 export const Products: React.FC = () => {
   const state = useContext(GlobalState);
   const [products] = state?.productsAPI.products;
-  const [isAdmin] = state?.userAPI?.isAdmin;
 
   if (products.length === 0) return <Loading />;
   return (
@@ -38,13 +37,7 @@ export const Products: React.FC = () => {
       <div className='productsWrapper'>
         <div className='products'>
           {products.map((product: IState["product"]) => {
-            return (
-              <ProductItem
-                key={product._id}
-                product={product}
-                isAdmin={isAdmin}
-              />
-            );
+            return <ProductItem key={product._id} product={product} />;
           })}
         </div>
       </div>

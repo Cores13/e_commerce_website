@@ -3,14 +3,30 @@ import "./ProductItem.css";
 import { IState as IProduct } from "../../pages/products/Products";
 import { GlobalState } from "../../GlobalState";
 import { Link } from "react-router-dom";
+import axios from "axios";
 interface Props {
   product: IProduct["product"];
-  isAdmin: boolean;
 }
 
-export const ProductItem: React.FC<Props> = ({ product, isAdmin }) => {
+export const ProductItem: React.FC<Props> = ({ product }) => {
   const state = useContext(GlobalState);
   const addCart: any = state?.userAPI?.addCart;
+  const [isAdmin] = state?.userAPI?.isAdmin;
+  const [callback, setCallback] = state?.productsAPI.callback;
+  const [token] = state?.token;
+
+  const deleteProduct = async () => {
+    try {
+      if (!isAdmin) {
+        return alert("Niste admin!");
+      }
+      const res = await axios.delete(`/api/products/${product._id}`, {
+        headers: { Authorization: token },
+      });
+      alert(res.data.msg);
+      setCallback(!callback);
+    } catch (error) {}
+  };
 
   return (
     <div className='productItem'>
@@ -38,7 +54,7 @@ export const ProductItem: React.FC<Props> = ({ product, isAdmin }) => {
                 <Link id='buyBtn' to={`/edit_product/${product._id}`}>
                   UREDI
                 </Link>
-                <Link id='detailsBtn' to='#!'>
+                <Link id='detailsBtn' to='#!' onClick={deleteProduct}>
                   IZBRISI
                 </Link>
               </>

@@ -100,11 +100,7 @@ export const ProductDetail: React.FC = () => {
           <div className='detailProductRelatedProduct'>
             {products.map((product: IProduct["product"]) => {
               return product.category === detailProduct.category ? (
-                <ProductItem
-                  key={product._id}
-                  product={product}
-                  isAdmin={isAdmin}
-                />
+                <ProductItem key={product._id} product={product} />
               ) : null;
             })}
           </div>
