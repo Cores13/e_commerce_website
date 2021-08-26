@@ -3,7 +3,7 @@ import axios from "axios";
 import { GlobalState } from "../../GlobalState";
 import "./CreateProduct.css";
 import { ImageLoading } from "../../components/loading/ImageLoading";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const initialState = {
   product_id: "",
@@ -12,6 +12,7 @@ const initialState = {
   description: "",
   content: "",
   category: "",
+  _id: "",
 };
 
 type IType = {
@@ -19,6 +20,11 @@ type IType = {
     public_id: string;
     url: string;
   } | null;
+  param:
+    | {
+        id: string;
+      }
+    | undefined;
 };
 
 export const CreateProduct: React.FC = () => {
@@ -34,10 +40,32 @@ export const CreateProduct: React.FC = () => {
   const [isAdmin] = state?.userAPI?.isAdmin;
   const [token] = state?.token;
   const history = useHistory();
+  const param = useParams<IType["param"]>();
+  const [products] = state?.productsAPI.products;
+  const [onEdit, setOnEdit] = useState(false);
 
   const styleUpload = {
     display: images ? "block" : "none",
   };
+
+  useEffect(() => {
+    if (param?.id) {
+      setOnEdit(true);
+      products.forEach((product: any) => {
+        if (product._id === param.id) {
+          setProduct(product);
+          setImages(true);
+          console.log(product);
+          setImage(product.images);
+        }
+      });
+    } else {
+      setOnEdit(false);
+      setProduct(initialState);
+      setImages(false);
+      setImage(null);
+    }
+  }, [param?.id, products]);
 
   const handleUpload = async (e: any) => {
     e.preventDefault();
@@ -124,17 +152,27 @@ export const CreateProduct: React.FC = () => {
       if (!image) {
         return alert("Niste odabrali fotografiju!");
       }
-      await axios.post(
-        "/api/products",
-        { ...product, images: image },
-        {
-          headers: { Authorization: token },
-        }
-      );
+      if (onEdit) {
+        await axios.put(
+          `/api/products/${product._id}`,
+          { ...product, images: image },
+          {
+            headers: { Authorization: token },
+          }
+        );
+      } else {
+        await axios.post(
+          "/api/products",
+          { ...product, images: image },
+          {
+            headers: { Authorization: token },
+          }
+        );
+      }
 
       setProduct(initialState);
       setImages(false);
-      history.push("/");
+      history.push("/products");
     } catch (error: any) {
       alert(error.response.data.msg);
     }
@@ -187,6 +225,7 @@ export const CreateProduct: React.FC = () => {
                 required
                 value={product.product_id}
                 onChange={handleChangeInput}
+                disabled={onEdit}
               />
             </div>
             <div className='createProductFormRow'>
@@ -250,8 +289,9 @@ export const CreateProduct: React.FC = () => {
                 })}
               </select>
             </div>
+
             <button className='createProductBtn' type='submit'>
-              Kreiraj
+              {onEdit ? "Uredi" : "Kreiraj"}
             </button>
           </form>
         </div>
