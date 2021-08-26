@@ -43,7 +43,6 @@ export const ProductDetail: React.FC = () => {
   const [detailProduct, setDetailProduct] = useState<Props["detailProduct"]>(
     {}
   );
-  const [isAdmin] = state?.userAPI?.isAdmin;
   const addCart: any = state?.userAPI?.addCart;
 
   useEffect(() => {
