@@ -9,6 +9,9 @@ export interface ContextType {
   productsAPI:
     | {
         products: (never[] | React.Dispatch<React.SetStateAction<never[]>>)[];
+        callback:
+          | (boolean | React.Dispatch<React.SetStateAction<boolean>>)
+          | any;
       }
     | any;
   userAPI:

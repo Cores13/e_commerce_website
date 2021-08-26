@@ -23,6 +23,9 @@
   margin-bottom: 5px;
   object-fit: cover;
 }
+.productItemTitle {
+  text-transform: capitalize;
+}
 .productItemBody {
   display: flex;
   flex-direction: column;

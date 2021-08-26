@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import "./Products.css";
 import { GlobalState } from "../../GlobalState";
 import { ProductItem } from "../../components/productItem/ProductItem";
@@ -29,16 +28,8 @@ export interface IState {
 
 export const Products: React.FC = () => {
   const state = useContext(GlobalState);
-  const [products, setProducts] = state?.productsAPI.products;
+  const [products] = state?.productsAPI.products;
   const [isAdmin] = state?.userAPI?.isAdmin;
-
-  useEffect(() => {
-    const getProducts = async () => {
-      const res = await axios.get("/api/products");
-      setProducts(res.data.products);
-    };
-    getProducts();
-  }, [setProducts]);
 
   if (products.length === 0) return <Loading />;
   return (

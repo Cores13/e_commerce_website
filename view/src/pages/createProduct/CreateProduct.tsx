@@ -43,6 +43,7 @@ export const CreateProduct: React.FC = () => {
   const param = useParams<IType["param"]>();
   const [products] = state?.productsAPI.products;
   const [onEdit, setOnEdit] = useState(false);
+  const [callback, setCallback] = state?.productsAPI.callback;
 
   const styleUpload = {
     display: images ? "block" : "none",
@@ -102,7 +103,7 @@ export const CreateProduct: React.FC = () => {
       setImages(true);
       setLoading(false);
     } catch (error: any) {
-      alert(error.response.data.msg);
+      alert(error.res.data.msg);
     }
   };
 
@@ -122,7 +123,7 @@ export const CreateProduct: React.FC = () => {
       setImage(null);
       setLoading(false);
     } catch (error: any) {
-      alert(error.response.data.msg);
+      alert(error.res.data.msg);
     }
   };
 
@@ -138,7 +139,7 @@ export const CreateProduct: React.FC = () => {
       setProduct({ ...product, [name]: value });
       console.log(product);
     } catch (error: any) {
-      alert(error.response.data.msg);
+      alert(error.res.data.msg);
     }
   };
 
@@ -172,9 +173,10 @@ export const CreateProduct: React.FC = () => {
 
       setProduct(initialState);
       setImages(false);
+      setCallback(!callback);
       history.push("/products");
     } catch (error: any) {
-      alert(error.response.data.msg);
+      alert(error.res.data.msg);
     }
   };
 
