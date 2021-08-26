@@ -34,6 +34,12 @@ export const Products: React.FC = () => {
   const [isAdmin] = state?.userAPI?.isAdmin;
   const [callback, setCallback] = state?.productsAPI.callback;
   const [token] = state?.token;
+  const [categories] = state?.categoriesAPI?.categories;
+  const [category, setCategory] = useState("");
+  const [sort, setSort] = useState("");
+  const [search, setSearch] = useState("");
+  const [page, setPAge] = useState(1);
+  const [result, setResult] = useState(0);
 
   const checkAll = () => {
     products.forEach((product: any) => {
@@ -68,18 +74,43 @@ export const Products: React.FC = () => {
       {/* {products.length === 0 && <Loading />} */}
       <div className='productsWrapper'>
         <div className='productsSideMenu'>
-          <span onClick={checkAll} className='productsMenuSelectAll navLink'>
-            OZNACI SVE{" "}
-            <input
-              type='checkbox'
-              checked={selectAll}
-              className='productsSelectAllCheckbox'
-            />
-          </span>
-
-          <span className='productsMenuDeleteAll navLink' onClick={deleteAll}>
-            IZBRISI OZNACENO
-          </span>
+          {isAdmin ? (
+            <>
+              <span
+                onClick={checkAll}
+                className='productsMenuSelectAll navLink'>
+                OZNACI SVE{" "}
+                <input
+                  type='checkbox'
+                  checked={selectAll}
+                  className='productsSelectAllCheckbox'
+                />
+              </span>
+              <span
+                className='productsMenuDeleteAll navLink'
+                onClick={deleteAll}>
+                IZBRISI OZNACENO
+              </span>{" "}
+            </>
+          ) : null}
+          <div className='productsFilterMenu'>
+            <div className='productsFilter'>
+              <span className='productFilterCategory'>Kategorija</span>
+              <select
+                name='category'
+                id='category'
+                className='productFilterCategorySelect'>
+                <option value=''>Izaberite kategoriju</option>
+                {categories.map((category: any) => {
+                  return (
+                    <option value={`${category._id}`} key={`${category._id}`}>
+                      {category.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          </div>
         </div>
         <div className='products'>
           {products.map((product: IState["product"]) => {
