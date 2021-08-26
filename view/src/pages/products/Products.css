@@ -21,19 +21,20 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+
   padding-left: 25px;
   width: 300px;
   height: 100vh;
   padding-top: 120px;
   color: white;
   font-weight: bold;
-  font-size: 1rem;
   background: rgba(0, 0, 0, 0.5);
 }
 .productsSelectAllCheckbox {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   margin-left: 10px;
+  cursor: pointer;
 }
 .productsMenuDeleteAll {
   cursor: pointer;
@@ -54,4 +55,24 @@
   padding-top: 80px;
   flex-wrap: wrap;
   overflow-y: scroll;
+}
+@media (max-width: 765px) {
+  .productsWrapper {
+    flex-direction: column;
+  }
+  .products {
+    padding-top: 170px;
+  }
+  .productsSideMenu {
+    flex-direction: row;
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+  }
+  .productsMenuDeleteAll {
+    margin-left: 25px;
+  }
 }

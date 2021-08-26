@@ -49,16 +49,14 @@ export const Products: React.FC = () => {
         return alert("Niste admin!");
       }
       if (product.checked) {
-        const destroyImg = axios.post(
+        axios.post(
           "/api/destroy",
           { public_id: product.images.public_id },
           { headers: { Authorization: token } }
         );
-        const destroyProduct = axios.delete(`/api/products/${product._id}`, {
+        axios.delete(`/api/products/${product._id}`, {
           headers: { Authorization: token },
         });
-        // await destroyImg;
-        // await destroyProduct;
       }
     });
     setCallback(!callback);
@@ -70,7 +68,7 @@ export const Products: React.FC = () => {
       {/* {products.length === 0 && <Loading />} */}
       <div className='productsWrapper'>
         <div className='productsSideMenu'>
-          <span onClick={checkAll} className='productsMenuSelectAll'>
+          <span onClick={checkAll} className='productsMenuSelectAll navLink'>
             OZNACI SVE{" "}
             <input
               type='checkbox'
@@ -79,7 +77,7 @@ export const Products: React.FC = () => {
             />
           </span>
 
-          <span className='productsMenuDeleteAll' onClick={deleteAll}>
+          <span className='productsMenuDeleteAll navLink' onClick={deleteAll}>
             IZBRISI SVE
           </span>
         </div>
