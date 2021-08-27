@@ -1,6 +1,8 @@
 .loadMore {
   width: 100%;
   margin: 25px;
+  margin-bottom: 105px;
+  margin-left: 0;
 }
 .loadMoreBtn {
   background: var(--green);
@@ -11,6 +13,18 @@
   text-decoration: none;
   color: white;
   border: none;
+}
+@media (max-width: 765px) {
+  .loadMore {
+    width: 100%;
+    margin: 25px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .loadMoreBtn {
+    margin-left: 15px;
+  }
 }
 @media (max-width: 652px) {
   .loadMore {
