@@ -24,9 +24,11 @@ export const Landing: React.FC = () => {
         <div className='landingCategories'>
           <div className='landingCategoriesWrapper'>
             <div className='landingCategoriesCards'>
-              <div className='landingCategoriesCard'>MASINE</div>
-              <div className='landingCategoriesCard'>STAPOVI</div>
-              <div className='landingCategoriesCard'>VARALICE</div>
+              <div className='landingCategoriesCard Reel'>
+                <div className='landingCategoriesCardTitle'>MASINICE</div>
+              </div>
+              <div className='landingCategoriesCard Rod'>STAPOVI</div>
+              <div className='landingCategoriesCard Bait'>VARALICE</div>
             </div>
           </div>
         </div>
