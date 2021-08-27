@@ -1,13 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React from "react";
+import "./Landing.css";
+import { Link } from "react-router-dom";
 
-interface Props {
-    
-}
+export const Landing: React.FC = () => {
+  return (
+    <div className='landing'>
+      <div className='landingWrapper'>
+        {/* Home */}
+        <div className='landingTitleSection'>
+          <div className='landingTitleSectionLeft'>
+            <h1 className='landingTitle'>
+              Većina planete prekrivena je vodom. Posao ribara je jednostavan:
+              odabrati najbolje dijelove!
+            </h1>
 
-export const Landing: React.FC = ({}: Props) => {
-    return (
-        <div>
-            LANDING
+            <Link to='/products' className='landingTitleLink'>
+              &#x2794; Kupi sada
+            </Link>
+          </div>
+          <div className='landingTitleSectionRight'></div>
         </div>
-    )
-}
+        {/* Categories */}
+        <div className='landingCategories'>
+          <div className='landingCategoriesWrapper'>
+            <div className='landingCategoriesCards'>
+              <div className='landingCategoriesCard'>sjsrtj</div>
+              <div className='landingCategoriesCard'>srtjsrtj</div>
+              <div className='landingCategoriesCard'>srtjsrtj</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

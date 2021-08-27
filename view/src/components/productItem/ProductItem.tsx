@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./ProductItem.css";
-import { IState as IProduct, Products } from "../../pages/products/Products";
+import { IState as IProduct } from "../../pages/products/Products";
 import { GlobalState } from "../../GlobalState";
 import { Link } from "react-router-dom";
 import axios from "axios";

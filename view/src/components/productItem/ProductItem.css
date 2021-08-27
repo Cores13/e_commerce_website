@@ -56,7 +56,7 @@
   font-weight: bold;
 }
 #buyBtn {
-  background: var(--green);
+  background: var(--light-green);
   padding: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
