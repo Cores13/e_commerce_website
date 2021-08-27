@@ -77,7 +77,7 @@ export const Products: React.FC = () => {
       <div className='productsWrapper'>
         <div className='productsSideMenu'>
           {isAdmin ? (
-            <>
+            <div className='productsAdminMenu'>
               <span
                 onClick={checkAll}
                 className='productsMenuSelectAll navLink'>
@@ -93,7 +93,7 @@ export const Products: React.FC = () => {
                 onClick={deleteAll}>
                 IZBRISI OZNACENO
               </span>{" "}
-            </>
+            </div>
           ) : null}
           <div className='productsFilterMenu'>
             <div className='productsFilter'>

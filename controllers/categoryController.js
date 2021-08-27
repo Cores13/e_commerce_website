@@ -1,4 +1,5 @@
 const Category = require("../models/categoryModel");
+const Products = require("../models/productModel");
 
 const getCategories = async (req, res) => {
   try {
@@ -29,6 +30,14 @@ const createCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
   try {
+    const products = await Products.findOne({ category: req.params.id });
+    if (products) {
+      return res
+        .status(400)
+        .json({
+          msg: "Izbrisite sve proizvode iz ove kategorije kako bi mogli izbrisati kategoriju.",
+        });
+    }
     await Category.findByIdAndDelete(req.params.id);
     res.json({ msg: "Kategorija uspjesno izbrisana." });
   } catch (error) {
