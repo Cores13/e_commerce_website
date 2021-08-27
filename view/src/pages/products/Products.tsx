@@ -3,6 +3,7 @@ import "./Products.css";
 import { GlobalState } from "../../GlobalState";
 import { ProductItem } from "../../components/productItem/ProductItem";
 import { Loading } from "../../components/loading/Loading";
+import { LoadMore } from "../../components/loadMore/LoadMore";
 import axios from "axios";
 
 export interface IState {
@@ -35,11 +36,9 @@ export const Products: React.FC = () => {
   const [callback, setCallback] = state?.productsAPI.callback;
   const [token] = state?.token;
   const [categories] = state?.categoriesAPI?.categories;
-  const [category, setCategory] = useState("");
-  const [sort, setSort] = useState("");
-  const [search, setSearch] = useState("");
-  const [page, setPAge] = useState(1);
-  const [result, setResult] = useState(0);
+  const [category, setCategory] = state?.productsAPI?.category;
+  const [sort, setSort] = state?.productsAPI?.sort;
+  const [search, setSearch] = state?.productsAPI?.search;
 
   const checkAll = () => {
     products.forEach((product: any) => {
@@ -68,10 +67,13 @@ export const Products: React.FC = () => {
     setCallback(!callback);
   };
 
-  if (products.length === 0) return <Loading />;
+  const handleCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(e.target.value);
+  };
+
   return (
     <>
-      {/* {products.length === 0 && <Loading />} */}
+      {/* SIDEMENU */}
       <div className='productsWrapper'>
         <div className='productsSideMenu'>
           {isAdmin ? (
@@ -95,24 +97,55 @@ export const Products: React.FC = () => {
           ) : null}
           <div className='productsFilterMenu'>
             <div className='productsFilter'>
-              <span className='productFilterCategory'>Kategorija</span>
+              <span className='productFilterCategory'>Kategorija:</span>
               <select
                 name='category'
                 id='category'
-                className='productFilterCategorySelect'>
-                <option value=''>Izaberite kategoriju</option>
+                className='productFilterCategorySelect'
+                onChange={handleCategory}>
+                <option value=''>Svi proizvodi</option>
                 {categories.map((category: any) => {
                   return (
-                    <option value={`${category._id}`} key={`${category._id}`}>
+                    <option
+                      value={`category=${category._id}`}
+                      key={`${category._id}`}>
                       {category.name}
                     </option>
                   );
                 })}
               </select>
             </div>
+            <div className='productsFilter'>
+              <span className='productFilterSearch'>Pretraga:</span>
+              <input
+                type='text'
+                value={search}
+                placeholder='Naziv proizvoda'
+                className='productFilterSearchInput'
+                onChange={(e) => setSearch(e.target.value.toLowerCase())}
+              />
+            </div>
+            <div className='productsFilter'>
+              <span className='productFilterSort'>Sortiraj:</span>
+              <select
+                name='sort'
+                id='sort'
+                className='productFilterSortSelect'
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}>
+                <option value=''>Najnoviji</option>
+                <option value='sort=oldest'>Najstariji</option>
+                <option value='sort=-sold'>Najprodavaniji</option>
+                <option value='sort=price'>Najniza cijena</option>
+                <option value='sort=-price'>Najvisa cijena</option>
+              </select>
+            </div>
           </div>
+          <LoadMore />
         </div>
+        {/* PRODUCTS */}
         <div className='products'>
+          {products.length === 0 && <Loading />}
           {products.map((product: IState["product"]) => {
             return <ProductItem key={product._id} product={product} />;
           })}

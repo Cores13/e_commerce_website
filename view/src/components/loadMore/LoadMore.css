@@ -1,0 +1,21 @@
+.loadMore {
+  width: 100%;
+  margin: 25px;
+}
+.loadMoreBtn {
+  background: var(--green);
+  padding: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  border: none;
+}
+@media (max-width: 652px) {
+  .loadMore {
+    width: 100%;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+}

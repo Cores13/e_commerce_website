@@ -16,14 +16,14 @@ export default function ProductsAPI() {
     const getProducts = async () => {
       const res = await axios.get(
         `/api/products?limit=${
-          page * 9
+          page * 10
         }&${category}&${sort}&title[regex]=${search}`
       );
+      setResult(res.data.result);
       setProducts(res.data.products);
-      console.log(res);
     };
     getProducts();
-  }, [callback]);
+  }, [callback, category, sort, page, search]);
 
   return {
     products: [products, setProducts],
