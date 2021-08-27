@@ -13,7 +13,7 @@ export const CartItem: React.FC<IProps> = ({ product }) => {
   const [cart, setCart] = state?.userAPI?.cart;
   const [token] = state?.token;
 
-  const addToCart = async () => {
+  const addToCart = async (cart: any) => {
     await axios.put(
       "http://localhost:8800/user/addcart",
       { cart },
@@ -30,7 +30,7 @@ export const CartItem: React.FC<IProps> = ({ product }) => {
       }
     });
     setCart([...cart]);
-    addToCart();
+    addToCart(cart);
   };
   const decrement = (id: any) => {
     cart.forEach((item: any) => {
@@ -39,7 +39,7 @@ export const CartItem: React.FC<IProps> = ({ product }) => {
       }
     });
     setCart([...cart]);
-    addToCart();
+    addToCart(cart);
   };
 
   const removeItem = (id: any) => {
@@ -50,7 +50,7 @@ export const CartItem: React.FC<IProps> = ({ product }) => {
         }
       });
       setCart([...cart]);
-      addToCart();
+      addToCart([]);
     }
   };
 

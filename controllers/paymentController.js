@@ -1,5 +1,6 @@
 const Payments = require("../models/paymentModel");
 const Users = require("../models/userModel");
+const Products = require("../models/productModel");
 
 const getPayments = async (req, res) => {
   try {
@@ -21,6 +22,10 @@ const createPayments = async (req, res) => {
     const { cart, id, address } = req.body;
     const { _id, name, email } = user;
 
+    cart.filter((item) => {
+      return sold(item._id, item.quantity, item.sold);
+    });
+
     const newPayment = new Payments({
       user_id: _id,
       name: name,
@@ -36,7 +41,15 @@ const createPayments = async (req, res) => {
     return res.status(500).json({ msg: error.message });
   }
 };
-// const sold
+
+const sold = async (id, quantity, oldSold) => {
+  await Products.findOneAndUpdate(
+    { _id: id },
+    {
+      sold: quantity + oldSold,
+    }
+  );
+};
 
 module.exports = {
   getPayments,
