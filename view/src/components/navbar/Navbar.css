@@ -57,10 +57,10 @@ nav {
   font-weight: bold;
 }
 .navLink:hover {
-  color: var(--logo-blue);
+  color: #00aeff;
 }
 .navLink .active {
-  color: var(--logo-blue);
+  color: #00aeff;
 }
 .cartElem {
   position: relative;

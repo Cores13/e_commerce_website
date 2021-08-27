@@ -68,7 +68,7 @@
   justify-content: space-evenly;
 }
 .loginButton {
-  background: var(--green);
+  background: var(--light-green);
   padding: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
