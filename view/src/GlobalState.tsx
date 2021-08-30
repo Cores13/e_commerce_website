@@ -12,11 +12,19 @@ export interface ContextType {
         callback:
           | (boolean | React.Dispatch<React.SetStateAction<boolean>>)
           | any;
+<<<<<<< HEAD
         category: (string | React.Dispatch<React.SetStateAction<string>>)[];
         sort: (string | React.Dispatch<React.SetStateAction<string>>)[];
         search: (string | React.Dispatch<React.SetStateAction<string>>)[];
         page: (number | React.Dispatch<React.SetStateAction<number>>)[];
         result: (number | React.Dispatch<React.SetStateAction<number>>)[];
+=======
+        category: (string | React.Dispatch<React.SetStateAction<never[]>>)[];
+        sort: (string | React.Dispatch<React.SetStateAction<never[]>>)[];
+        search: (string | React.Dispatch<React.SetStateAction<never[]>>)[];
+        page: (number | React.Dispatch<React.SetStateAction<never[]>>)[];
+        result: (number | React.Dispatch<React.SetStateAction<never[]>>)[];
+>>>>>>> 7776e4372e4fe0d7e29e8a8d09443a1e650de32c
       }
     | any;
   userAPI:
