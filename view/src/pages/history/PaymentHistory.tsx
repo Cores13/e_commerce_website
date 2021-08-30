@@ -29,7 +29,6 @@ export const PaymentHistory: React.FC = () => {
     }
   }, [token, isAdmin, setHistory]);
 
-  console.log(history);
   return (
     <div className='history'>
       <div className='historyWrapper'>

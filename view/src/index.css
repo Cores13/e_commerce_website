@@ -15,15 +15,15 @@
   --bg-white: #e6e6e6;
 }
 ::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
+  width: 0;
   background: transparent;
-  height: 0; /* Optional: just make scrollbar invisible */
+  height: 0;
 }
-/* Optional: show position indicator in red */
+
 ::-webkit-scrollbar-thumb {
-  width: 0; /* Remove scrollbar space */
+  width: 0;
   background: transparent;
-  height: 0; /* Optional: just make scrollbar invisible */
+  height: 0;
 }
 body {
   min-height: 100vh;

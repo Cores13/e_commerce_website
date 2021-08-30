@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Teko:wght@300;400;500;600;700&display=swap");
 .landing {
   display: flex;
   flex-direction: column;
@@ -5,8 +6,20 @@
   min-height: 100vh;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
-  background: rgb(11, 33, 61);
+  overflow-y: hidden;
+  background: rgb(14, 26, 40);
+  background: -webkit-linear-gradient(
+    to right,
+    rgb(14, 26, 40),
+    #1a2980,
+    rgb(14, 26, 40)
+  );
+  background: linear-gradient(
+    to right,
+    rgb(14, 26, 40),
+    #002950,
+    rgb(14, 26, 40)
+  );
 }
 .landingWrapper {
   display: flex;
@@ -22,60 +35,78 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
-  padding-top: 80px;
+  align-items: flex-start;
+  padding-top: 150px;
   width: 100%;
   height: 100%;
-  min-height: 80vh;
+  min-height: 90vh;
   background: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 0.05)
     ),
     url("../../images/landing2.jpg");
   background-size: cover;
   background-position: center center;
   padding-left: 35px;
   padding-right: 35px;
+  position: relative;
+}
+.landingTitleSection::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 33, 61, 0.1) 0%,
+    rgba(11, 33, 61, 0.9) 50%,
+    rgba(14, 26, 40, 1) 100%
+  );
 }
 .landingTitleSectionLeft {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 60%;
   padding-left: 25px;
 }
 .landingTitle {
   font-weight: 600;
   font-style: italic;
   color: white;
-  font-size: 4rem;
+  font-size: 5rem;
   font-family: "Teko", sans-serif;
   text-align: left;
+  text-shadow: 2px 2px var(--green);
 }
 
 .landingTitleLink {
   color: white;
+  text-shadow: 2px 2px var(--green);
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 600;
   font-family: "Teko", sans-serif;
   font-style: italic;
-  text-align: left;
+  text-align: center;
   margin-top: 25px;
   width: 100%;
+  width: 40%;
+  transform: skew(-10deg);
 }
 .landingTitleLink:hover {
-  color: var(--logo-blue);
   transform: scale(1.1);
   transition: all 300ms ease-in-out;
 }
 .landingTitleSectionRight {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
 }
 /* Categories */
 .landingCategories {
@@ -95,14 +126,19 @@
   padding-bottom: 25px;
   width: 100%;
 }
+
 .landingCategoriesCards {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   position: absolute;
-  top: -200px;
+  top: -220px;
   width: 100%;
+  text-decoration: none;
+}
+.landingCategoriesCards > a {
+  text-decoration: none;
 }
 .landingCategoriesCard {
   display: flex;
@@ -114,10 +150,12 @@
   background: rgb(26, 26, 26);
   border-radius: 15px;
   border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
   color: white;
-  border: 1px solid rgb(48, 48, 48);
-  border-left: 3px solid var(--light-green);
-  font-size: 2.3rem;
+  text-shadow: 2px 2px var(--green);
+  border-left: 2px solid var(--logo-blue);
+  border-top: 2px solid var(--logo-blue);
+  font-size: 3rem;
   font-style: italic;
   font-weight: bold;
   text-transform: uppercase;
@@ -129,9 +167,9 @@
 .Reel {
   background: linear-gradient(
       9deg,
-      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.3)
+      rgba(0, 0, 0, 0.1)
     ),
     url("../../images/reel.jpg") !important;
   background-size: cover !important;
@@ -140,9 +178,9 @@
 .Rod {
   background: linear-gradient(
       9deg,
-      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.3)
+      rgba(0, 0, 0, 0.1)
     ),
     url("../../images/rod.jpg") !important;
   background-size: cover !important;
@@ -151,11 +189,66 @@
 .Bait {
   background: linear-gradient(
       9deg,
-      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.3)
+      rgba(0, 0, 0, 0.1)
     ),
     url("../../images/bait.jpg") !important;
   background-size: cover !important;
   background-position: center center !important;
+}
+.landingMostSold {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 550px;
+  margin-bottom: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background: rgb(185, 185, 185);
+  background: url("../../images/wood.jpg");
+  background-size: contain;
+  position: relative;
+}
+.landingMostSold::before {
+  content: "";
+  position: absolute;
+  top: -75px;
+  left: 0;
+  width: 100%;
+  height: 155px;
+  background-image: url("../../images/rope.png");
+  background-size: inherit;
+  background-repeat: repeat-x;
+}
+.landingMostSold::after {
+  content: "";
+  position: absolute;
+  bottom: -75px;
+  left: 0;
+  width: 100%;
+  height: 155px;
+  background-image: url("../../images/rope.png");
+  background-size: inherit;
+  background-repeat: repeat-x;
+}
+.landingMostSoldWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.landingMostSoldTitle {
+  font-family: "Teko", sans-serif;
+  color: white;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px var(--green);
+}
+.landingMostSoldProduct {
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }

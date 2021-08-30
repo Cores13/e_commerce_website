@@ -36,7 +36,7 @@ export const Products: React.FC = () => {
   const [callback, setCallback] = state?.productsAPI.callback;
   const [token] = state?.token;
   const [categories] = state?.categoriesAPI?.categories;
-  const [setCategory] = state?.productsAPI?.category;
+  const [category, setCategory] = state?.productsAPI?.category;
   const [sort, setSort] = state?.productsAPI?.sort;
   const [search, setSearch] = state?.productsAPI?.search;
 
@@ -68,7 +68,7 @@ export const Products: React.FC = () => {
   };
 
   const handleCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value);
+    setCategory(e.currentTarget.value);
   };
 
   return (

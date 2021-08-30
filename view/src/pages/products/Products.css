@@ -30,6 +30,7 @@
   color: white;
   font-weight: bold;
   background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
 }
 .productsSelectAllCheckbox {
   width: 16px;
