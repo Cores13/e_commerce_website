@@ -85,6 +85,39 @@ export const Landing: React.FC = () => {
             </div>
           </div>
         </div>
+        <div className='landingRules'>
+          <div className='landingRulesWrapper'>
+            <img src='./pike.png' alt='' className='landingRulesPike' />
+            <ul className='landingRulesList'>
+              <h1 className='landingRulesTitle'>
+                PRAVILA RIBOLOVA
+                <br />
+              </h1>
+              <li className='landingRulesListItem'>
+                Besplatan ribolov u privatne svrhe dozvoljen je svima na svim
+                vodenim tijelima. Pored prirodnih rezervata, odgovarajući
+                rasadnici i privatni rezervoari.
+              </li>
+              <li className='landingRulesListItem'>
+                Ribolov je zabranjen na udaljenosti manjoj od 500 metara od
+                brana, mostova ili vodenih brana. Također nije dozvoljeno loviti
+                direktno sa samih takvih struktura.
+              </li>
+              <li className='landingRulesListItem'>
+                Ulov za rekreativni ribolov ne smije prelaziti 5 kg po osobi.
+                Ovo pravilo treba poštovati. Takođe, amateri ne smiju loviti
+                mrežama i koristiti predmete koji probijaju. Upotreba eksploziva
+                ili toksičnih supstanci je takođe zabranjena.
+              </li>
+              <li className='landingRulesListItem'>
+                Ribolov je dozvoljen tokom cijele godine. Ograničenja i zabrane
+                ribolova uvode se samo tokom mrijesta. To se radi kako bi se
+                ribama osigurali povoljni uslovi za razmnožavanje. To osigurava
+                održavanje njegovih brojeva.
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
