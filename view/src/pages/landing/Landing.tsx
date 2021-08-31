@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import { ProductItem } from "../../components/productItem/ProductItem";
 import axios from "axios";
+import { render } from "@testing-library/react";
+import { WaterDrops } from "../../components/waterDrops/WaterDrops";
 
 export const Landing: React.FC = () => {
   const state = useContext(GlobalState);
@@ -45,6 +47,7 @@ export const Landing: React.FC = () => {
         </div>
         {/* Categories */}
         <div className='landingCategories'>
+          <WaterDrops />
           <div className='landingCategoriesWrapper'>
             <div className='landingCategoriesCards'>
               <Link
@@ -77,7 +80,9 @@ export const Landing: React.FC = () => {
         {/* MOST SOLD ITEMS */}
         <div className='landingMostSold'>
           <div className='landingMostSoldWrapper'>
-            <h2 className='landingMostSoldTitle'>NAJPRODAVANIJI PROIZVODI</h2>
+            <h2 className='landingMostSoldTitle title'>
+              NAJPRODAVANIJI PROIZVODI
+            </h2>
             <div className='landingMostSoldProduct'>
               {products.map((product: any) => {
                 return <ProductItem key={product._id} product={product} />;
@@ -86,10 +91,11 @@ export const Landing: React.FC = () => {
           </div>
         </div>
         <div className='landingRules'>
+          <WaterDrops />
           <div className='landingRulesWrapper'>
             <img src='./pike.png' alt='' className='landingRulesPike' />
             <ul className='landingRulesList'>
-              <h1 className='landingRulesTitle'>
+              <h1 className='landingRulesTitle title'>
                 PRAVILA RIBOLOVA
                 <br />
               </h1>

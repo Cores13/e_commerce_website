@@ -5,7 +5,7 @@
   width: 100vw;
   min-height: 100vh;
   height: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   overflow-y: hidden;
   background: linear-gradient(
     to right,
@@ -22,6 +22,12 @@
   width: 100%;
   height: 100%;
   margin: 0 auto;
+}
+.title {
+  font-family: "Teko", sans-serif;
+  color: white;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px var(--green);
 }
 /* Home */
 .landingTitleSection {
@@ -208,7 +214,7 @@
   height: 550px;
   margin-bottom: 50px;
   padding-top: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 35px;
   background: rgb(185, 185, 185);
   background: url("../../images/wood.jpg");
   background-size: contain;
@@ -244,15 +250,11 @@
   width: 100%;
   height: 100%;
 }
-.landingMostSoldTitle {
-  font-family: "Teko", sans-serif;
-  color: white;
-  font-size: 3.5rem;
-  text-shadow: 2px 2px var(--green);
-}
 .landingMostSoldProduct {
   display: flex;
+  width: 100%;
   flex-direction: row;
+  justify-content: space-evenly;
   overflow-y: hidden;
   overflow-x: scroll;
 }
@@ -261,8 +263,10 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  margin-top: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   margin-bottom: 25px;
+  position: relative;
 }
 .landingRulesWrapper {
   display: flex;
@@ -273,12 +277,16 @@
   text-align: left;
   color: white;
   margin: 0 auto;
+  overflow-x: scroll;
 }
 .landingRulesList {
   font-size: 1rem;
   line-height: 1.5;
+  width: 50%;
+  z-index: 3;
 }
 .landingRulesPike {
-  width: 50%;
+  width: 40%;
   height: auto;
+  z-index: 2;
 }
