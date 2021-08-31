@@ -1,7 +1,10 @@
 import React from "react";
 import "./WaterDrops.css";
-export const WaterDrops = () => {
-  const n = 35;
+interface IProps {
+  j: number;
+}
+export const WaterDrops: React.FC<IProps> = ({ j }) => {
+  const n = j;
   return (
     <div className='waterDrops'>
       {[...Array(n)].map((e, i) => (

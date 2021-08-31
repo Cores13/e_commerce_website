@@ -1,20 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Landing.css";
 import { Link } from "react-router-dom";
-import { GlobalState } from "../../GlobalState";
 import { ProductItem } from "../../components/productItem/ProductItem";
 import axios from "axios";
-import { render } from "@testing-library/react";
 import { WaterDrops } from "../../components/waterDrops/WaterDrops";
 
 export const Landing: React.FC = () => {
-  const state = useContext(GlobalState);
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("");
-  const [callback, setCallback] = useState(false);
-  const [sort, setSort] = useState("");
-  const [search, setSearch] = useState("");
-  const [page, setPAge] = useState(1);
+  const [callback] = useState(false);
+  const [sort] = useState("");
+  const [search] = useState("");
+  const [page] = useState(1);
   const [result, setResult] = useState(0);
 
   useEffect(() => {
@@ -47,7 +44,7 @@ export const Landing: React.FC = () => {
         </div>
         {/* Categories */}
         <div className='landingCategories'>
-          <WaterDrops />
+          <WaterDrops j={25} />
           <div className='landingCategoriesWrapper'>
             <div className='landingCategoriesCards'>
               <Link
@@ -91,7 +88,7 @@ export const Landing: React.FC = () => {
           </div>
         </div>
         <div className='landingRules'>
-          <WaterDrops />
+          <WaterDrops j={35} />
           <div className='landingRulesWrapper'>
             <img src='./pike.png' alt='' className='landingRulesPike' />
             <ul className='landingRulesList'>
@@ -128,6 +125,31 @@ export const Landing: React.FC = () => {
                 održavanje njegovih brojeva.
               </li>
             </ul>
+          </div>
+        </div>
+        <div className='landingPartners'>
+          {/* <WaterDrops j={15} /> */}
+          <div className='landingPartnersWrapper'>
+            <img
+              src='./okuma.svg'
+              alt='okuma'
+              className='landingPartnersLogo'
+            />
+            <img
+              src='./shimano.png'
+              alt='shimano'
+              className='landingPartnersLogo'
+            />
+            <img
+              src='./formax.jpeg'
+              alt='formax'
+              className='landingPartnersLogo'
+            />
+            <img
+              src='./carpologija.png'
+              alt='carpologija'
+              className='landingPartnersLogo'
+            />
           </div>
         </div>
       </div>
