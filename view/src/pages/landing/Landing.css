@@ -162,13 +162,14 @@
   border-radius: 15px;
   color: white;
   text-shadow: 2px 2px var(--green);
-  font-size: 3rem;
+  font-size: 3.8rem;
   font-style: italic;
   font-weight: bold;
   text-transform: uppercase;
   box-shadow: -3px 4px 13px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -3px 4px 13px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -3px 4px 13px 0px rgba(0, 0, 0, 0.75);
+  font-family: "Teko", sans-serif;
 }
 .landingCategoriesCard:hover {
   transform: scale3d(1.05, 1.05, 1.05);
@@ -314,4 +315,72 @@
   z-index: 2;
   filter: brightness(100%);
   margin: 10px;
+}
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #0a1926;
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+.footerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  width: 90%;
+  height: 100%;
+}
+.footerLogo {
+  font-size: 5rem;
+  font-family: "Courgette", cursive;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--logo-blue);
+}
+.footerContact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  text-align: left;
+  font-weight: 100;
+}
+.footerContactTitle {
+  font-family: "Teko", sans-serif;
+  align-self: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+.footerContactInfo {
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  text-align: left;
+  font-weight: 100;
+}
+.footerLinksTitle {
+  font-family: "Teko", sans-serif;
+  align-self: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+.footerLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 100;
+  cursor: pointer;
+  margin-bottom: 10px;
 }

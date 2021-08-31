@@ -8,7 +8,8 @@
   border-radius: 7px;
   margin: 25px;
   position: relative;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.87), var(--green));
+  background: linear-gradient(0deg, #06111f, #002950);
+  /* background: #071525; */
   backdrop-filter: blur(5px);
 }
 .productItemCheckbox {

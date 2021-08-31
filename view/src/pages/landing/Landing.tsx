@@ -52,9 +52,7 @@ export const Landing: React.FC = () => {
                 onClick={() =>
                   setCategory("category=60fff54422d16d1ef7943dd5")
                 }>
-                <div className='landingCategoriesCard Reel'>
-                  <div className='landingCategoriesCardTitle'>MASINICE</div>
-                </div>
+                <div className='landingCategoriesCard Reel'>MASINICE</div>
               </Link>
 
               <Link
@@ -150,6 +148,36 @@ export const Landing: React.FC = () => {
               alt='carpologija'
               className='landingPartnersLogo'
             />
+          </div>
+        </div>
+        <div className='footer'>
+          <div className='footerWrapper'>
+            <div className='footerLogo'>
+              <Link className='footerLogo' to='/'>
+                RiboSport
+              </Link>
+            </div>
+            <div className='footerContact'>
+              <h1 className='footerContactTitle'>KONTAKT</h1>
+              <h3 className='footerContactInfo'>Email: info@ribosport.com</h3>
+              <h3 className='footerContactInfo'>Tel: +387 61 408 106</h3>
+              <h3 className='footerContactInfo'>
+                Adresa: 10. Septembar 58, Banovici, 75290
+              </h3>
+            </div>
+
+            <div className='footerLinks'>
+              <h1 className='footerLinksTitle'>LINKOVI</h1>
+              <Link className='footerLink' to=''>
+                OLX
+              </Link>
+              <Link className='footerLink' to=''>
+                FACEBOOK
+              </Link>
+              <Link className='footerLink' to=''>
+                INSTAGRAM
+              </Link>
+            </div>
           </div>
         </div>
       </div>

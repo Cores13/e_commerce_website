@@ -310,10 +310,6 @@ export const Navbar: React.FC = () => {
       {/* ========================================================== */}
 
       <nav>
-        <div className='menu'>
-          <MenuIcon className='menuIcon' />
-        </div>
-
         <div className='logo'>
           <Link className='logo' to='/'>
             RiboSport
