@@ -9,8 +9,8 @@ export const WaterDrops = () => {
           className='drop droplet'
           key={i}
           style={{
-            top: `${Math.floor(Math.random() * (100 - 0))}%`,
-            left: `${Math.floor(Math.random() * (100 - 0))}%`,
+            top: `${Math.ceil(Math.random() * (99 - 1) + 1)}%`,
+            left: `${Math.ceil(Math.random() * (99 - 1) + 1)}%`,
           }}></div>
       ))}
     </div>
