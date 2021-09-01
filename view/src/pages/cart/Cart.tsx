@@ -28,33 +28,35 @@ export const Cart: React.FC = () => {
       <div className='cartWrapper'>
         <div className='cart'>
           <div className='cartLeft'>
-            <div className='cartLeftTop'>
-              <h4>Naziv proizvoda</h4>
-              <h4>Slika</h4>
-              <h4>Opis</h4>
-              <h4>Količina</h4>
-              <h4>Cijena</h4>
-              <h4>Ukloni</h4>
-            </div>
-            <div className='cartLeftBottom'>
-              <ol className='cartItemsList'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Naziv proizvoda</th>
+                  <th>Slika</th>
+                  <th>Opis</th>
+                  <th>Količina</th>
+                  <th>Cijena</th>
+                  <th>Ukloni</th>
+                </tr>
+              </thead>
+              <tbody>
                 {cart.map((product: any) => {
-                  return <CartItem key={product._id} product={product} />;
+                  return (
+                    <tr
+                      key={product._id}
+                      className='cartItemBorder'
+                      style={{ border: "1px solid lightgrey !important" }}>
+                      <CartItem key={product._id} product={product} />
+                    </tr>
+                  );
                 })}
-              </ol>
-            </div>
+              </tbody>
+            </table>
           </div>
           <div className='cartRight'>
             <div className='cartRightTop'>Ukupno: {total}KM</div>
             <div className='cartRightBottom'>
-              {/* <PayPalButton
-                total={total}
-                onSuccess={(payment: any) => tranSuccess(payment)}
-                tranSuccess={tranSuccess}
-              /> */}
               <PayPal />
-
-              {/* <PayPal total={total} tranSuccess={tranSuccess} /> */}
             </div>
           </div>
         </div>

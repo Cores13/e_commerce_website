@@ -10,7 +10,12 @@
   padding-top: 120px;
   justify-content: center;
   align-items: flex-start;
-  background-color: white;
+  background: linear-gradient(
+    to right,
+    rgb(14, 26, 40),
+    #002950,
+    rgb(14, 26, 40)
+  );
 }
 .cart {
   display: flex;
@@ -27,6 +32,9 @@
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 10px;
+  box-shadow: -1px 3px 12px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 3px 12px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 12px 0px rgba(0, 0, 0, 0.75);
 }
 .cartLeftTop {
   display: flex;
@@ -46,18 +54,26 @@
   padding: 15px;
   padding-left: 35px;
 }
+.cartItemBorder {
+  border: 1px solid lightgrey !important;
+}
 .cartRight {
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 100%;
   width: 20%;
+  padding: 10px;
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 10px;
+  box-shadow: -1px 3px 12px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 3px 12px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 12px 0px rgba(0, 0, 0, 0.75);
 }
 .cartRightTop {
   display: flex;
   flex-direction: row;
+  font-size: 1.3rem;
 }
 .cartRightBottom {
   display: flex;
@@ -84,8 +100,8 @@
   height: 80px;
 }
 .cartItemDeleteIcon:hover {
-  fill: red !important;
-  color: red !important;
+  fill: crimson !important;
+  color: crimson !important;
   background: none !important;
   border: none !important;
   outline: none !important;
@@ -94,4 +110,17 @@
   background: none !important;
   border: none !important;
   outline: none !important;
+}
+@media (max-width: 1024px) {
+  .cart {
+    flex-direction: column;
+  }
+  .cartRight {
+    margin-top: 25px;
+    width: 50%;
+    align-self: center;
+  }
+  .cartLeft {
+    width: 100%;
+  }
 }

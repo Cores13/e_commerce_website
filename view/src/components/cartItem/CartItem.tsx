@@ -55,29 +55,33 @@ export const CartItem: React.FC<IProps> = ({ product }) => {
   };
 
   return (
-    <li className='cartItem'>
-      <h4 className='cartItemTitle'>{product.title}</h4>
-      <img src={product?.images?.url} alt='Artikal' className='cartItemImg' />
-      <p className='cartItemDescription'>{product.description}</p>
-      <div className='cartItemQuantity'>
+    <>
+      <td>{product.title}</td>
+      <td>
+        <img src={product?.images?.url} alt='Artikal' className='cartItemImg' />
+      </td>
+      <td>{product.description}</td>
+      <td className='cartItemQuantityButtons'>
         <button
-          className='cartItemQuantityBtn'
+          className='cartItemQuantityBtn minus'
           onClick={() => decrement(product._id)}>
           -
         </button>
         <span className='cartItemQuantityValue'>{product.quantity}</span>
         <button
-          className='cartItemQuantityBtn'
+          className='cartItemQuantityBtn plus'
           onClick={() => increment(product._id)}>
           +
         </button>
-      </div>
-      <p className='cartItemPrice'>{product.price * product.quantity} KM</p>
-      <button
-        className='cartItemDeleteIcon'
-        onClick={() => removeItem(product._id)}>
-        <DeleteIcon />
-      </button>
-    </li>
+      </td>
+      <td>{product.price * product.quantity} KM</td>
+      <td>
+        <button
+          className='cartItemDeleteIcon'
+          onClick={() => removeItem(product._id)}>
+          <DeleteIcon />
+        </button>
+      </td>
+    </>
   );
 };
