@@ -29,8 +29,6 @@ export const PaymentDetail: React.FC = () => {
     }
   }, [params.id, history]);
 
-  console.log(paymentDetails);
-
   if (paymentDetails.length === 0) {
     return null;
   }
@@ -51,8 +49,8 @@ export const PaymentDetail: React.FC = () => {
             <tbody>
               <tr key={paymentDetails.paymentID}>
                 <td>{paymentDetails.name}</td>
-                <td>{`${paymentDetails.address.address_line_1},${paymentDetails.address.admin_area_2}`}</td>
-                <td>{paymentDetails.address.postal_code}</td>
+                <td>{`${paymentDetails.address},${paymentDetails.city}`}</td>
+                <td>{paymentDetails.zip}</td>
               </tr>
             </tbody>
           </table>

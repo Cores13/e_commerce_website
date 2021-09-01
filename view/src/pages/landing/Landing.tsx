@@ -15,6 +15,7 @@ export const Landing: React.FC = () => {
   const [sort] = useState("");
   const [search] = useState("");
   const [page] = useState(1);
+  // eslint-disable-next-line
   const [result, setResult] = useState(0);
 
   useEffect(() => {

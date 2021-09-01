@@ -13,14 +13,16 @@ const getPayments = async (req, res) => {
 
 const createPayments = async (req, res) => {
   try {
-    const user = await Users.findById(req.user.id).select("name email");
+    const user = await Users.findById(req.user.id).select(
+      "name email address city zip"
+    );
 
     if (!user) {
       return res.status(400).json({ msg: "Korisnik ne postoji." });
     }
-    // TODO: ADDRESS
-    const { cart, id, address } = req.body;
-    const { _id, name, email } = user;
+
+    const { cart, id } = req.body;
+    const { _id, name, email, address, city, zip } = user;
 
     cart.filter((item) => {
       return sold(item._id, item.quantity, item.sold);
@@ -33,6 +35,8 @@ const createPayments = async (req, res) => {
       cart: cart,
       paymentID: id,
       address: address,
+      city: city,
+      zip: zip,
     });
 
     await newPayment.save();

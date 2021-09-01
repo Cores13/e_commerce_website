@@ -20,8 +20,6 @@ function App() {
   const [isLogged] = state?.userAPI?.isLogged;
   const [isAdmin] = state?.userAPI?.isAdmin;
 
-  // TODO: ADDRESS
-
   return (
     <Router>
       <div className='App'>

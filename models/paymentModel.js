@@ -19,7 +19,15 @@ const paymentsSchema = new mongoose.Schema(
       required: true,
     },
     address: {
-      type: Object,
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    zip: {
+      type: String,
       required: true,
     },
     cart: {

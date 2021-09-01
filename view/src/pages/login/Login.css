@@ -41,7 +41,10 @@
 }
 .email,
 .password,
-.name {
+.name,
+.address,
+.city,
+.zipCode {
   margin: 15px;
   height: 45px;
   outline: none;
@@ -57,7 +60,10 @@
 }
 .emailLabel,
 .passwordLabel,
-.nameLabel {
+.nameLabel,
+.addressLabel,
+.cityLabel,
+.zipCodeLabel {
   color: white;
   text-align: left;
   margin-left: 15px;

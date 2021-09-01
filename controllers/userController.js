@@ -5,7 +5,7 @@ const Payments = require("../models/paymentModel");
 
 const register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, address, city, zip } = req.body;
 
     // Validate email and password
     const user = await Users.findOne({ email });
@@ -24,7 +24,12 @@ const register = async (req, res) => {
       name,
       email,
       password: passwordHash,
+      address,
+      city,
+      zip,
     });
+
+    console.log(newUser);
 
     // Save user to MongoDB
     await newUser.save();

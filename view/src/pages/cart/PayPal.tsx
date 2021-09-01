@@ -40,12 +40,10 @@ export const PayPal = () => {
 
   const tranSuccess = async (data: any, details: any) => {
     const { id } = details;
-    // TODO ADDRESS
-    const { address } = details.payer;
     await axios
       .post(
         "http://localhost:8800/api/payment",
-        { cart, id, address },
+        { cart, id },
         {
           headers: { Authorization: token },
         }
@@ -61,7 +59,6 @@ export const PayPal = () => {
       amount={total}
       currency='EUR'
       onSuccess={async (details: any, data: any) => {
-        console.log(details);
         tranSuccess(data, details);
       }}
     />

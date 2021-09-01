@@ -56,7 +56,6 @@ export const CreateProduct: React.FC = () => {
         if (product._id === param.id) {
           setProduct(product);
           setImages(true);
-          console.log(product);
           setImage(product.images);
         }
       });
@@ -137,7 +136,6 @@ export const CreateProduct: React.FC = () => {
     try {
       const { name, value } = e.currentTarget;
       setProduct({ ...product, [name]: value });
-      console.log(product);
     } catch (error: any) {
       alert(error.res.data.msg);
     }

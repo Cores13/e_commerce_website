@@ -8,6 +8,9 @@ export const Register: React.FC = () => {
     name: "",
     email: "",
     password: "",
+    address: "",
+    city: "",
+    zip: "",
   });
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,13 +36,13 @@ export const Register: React.FC = () => {
         <form className='loginForm' onSubmit={handleSubmit}>
           <h1 className='loginTitle'>Registracija</h1>
           <label htmlFor='name' className='nameLabel'>
-            Ime
+            Ime i prezime
           </label>
           <input
             type='text'
             name='name'
             required
-            placeholder='Ime'
+            placeholder='Ime i prezime'
             className='name'
             value={user.name}
             onChange={(e) => onChangeInput(e)}
@@ -54,6 +57,42 @@ export const Register: React.FC = () => {
             placeholder='Email'
             className='email'
             value={user.email}
+            onChange={(e) => onChangeInput(e)}
+          />
+          <label htmlFor='address' className='emailLabel'>
+            Adresa
+          </label>
+          <input
+            type='text'
+            name='address'
+            required
+            placeholder='Adresa'
+            className='address'
+            value={user.address}
+            onChange={(e) => onChangeInput(e)}
+          />
+          <label htmlFor='city' className='cityLabel'>
+            Grad
+          </label>
+          <input
+            type='text'
+            name='city'
+            required
+            placeholder='Grad'
+            className='city'
+            value={user.city}
+            onChange={(e) => onChangeInput(e)}
+          />
+          <label htmlFor='zipCode' className='zipCodeLabel'>
+            Postanski broj
+          </label>
+          <input
+            type='text'
+            name='zip'
+            required
+            placeholder='Postanski broj'
+            className='zipCode'
+            value={user.zip}
             onChange={(e) => onChangeInput(e)}
           />
           <label htmlFor='password' className='passwordLabel'>
