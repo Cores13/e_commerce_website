@@ -13,8 +13,15 @@ export const PayPal = () => {
 
   useEffect(() => {
     const getTotal = async () => {
+      const totalEur = await axios.get(
+        `http://data.fixer.io/api/latest?access_key=6fdb3a7cdea6638c2d56268d2d89d15b&base=EUR&symbols=BAM`
+      );
       const total = cart.reduce((prev: any, item: any) => {
-        return (prev + item.price * item.quantity) * 0.51;
+        // return (prev + item.price * item.quantity) * 0.51;
+        return (
+          (prev + item.price * item.quantity) /
+          totalEur.data.rates.BAM
+        ).toFixed(2);
       }, 0);
 
       setTotal(total);

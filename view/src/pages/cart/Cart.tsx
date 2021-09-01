@@ -45,7 +45,7 @@ export const Cart: React.FC = () => {
             </div>
           </div>
           <div className='cartRight'>
-            <div className='cartRightTop'>Ukupno: {total}</div>
+            <div className='cartRightTop'>Ukupno: {total}KM</div>
             <div className='cartRightBottom'>
               {/* <PayPalButton
                 total={total}
