@@ -289,9 +289,12 @@
   z-index: 3;
 }
 .landingRulesPike {
-  width: 40%;
+  width: 100%;
   height: auto;
   z-index: 2;
+}
+.animationPike {
+  width: 40%;
 }
 /* Partners */
 .landingPartners {
@@ -328,6 +331,8 @@
   background: #0a1926;
   padding-top: 55px;
   padding-bottom: 55px;
+  border-top: 3px solid #004483;
+  border-bottom: 15px solid #004483;
 }
 .footerWrapper {
   display: flex;
@@ -387,22 +392,13 @@
   cursor: pointer;
   margin-bottom: 10px;
 }
+.footerLink:hover {
+  transform: scale(1.1);
+}
 .footerLinkOlx {
   width: 44px !important;
   margin-top: 3px !important;
 }
-/* .cls-1 {
-  fill: #00c6bd;
-}
-.cls-2 {
-  fill: #00c6bd;
-}
-.cls-3 {
-  fill: #00c6bd;
-}
-.cls-4 {
-  fill: #00c6bd;
-} */
 .footerLinkOlx,
 .footerLinkFacebook,
 .footerLinkInstagram {
@@ -445,7 +441,7 @@
   .landingRulesWrapper {
     width: 99%;
   }
-  .landingRulesPike {
+  .animationPike {
     width: 50%;
   }
   .title {
@@ -509,7 +505,7 @@
     flex-direction: column;
     width: 100%;
   }
-  .landingRulesPike {
+  .animationPike {
     width: 90%;
   }
   .landingRulesList {

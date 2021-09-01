@@ -1,6 +1,7 @@
 .emptyCart {
   padding-top: 90px;
   font-size: 3rem;
+  color: white;
 }
 .cartWrapper {
   width: 100vw;

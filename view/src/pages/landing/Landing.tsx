@@ -51,8 +51,9 @@ export const Landing: React.FC = () => {
           <div className='landingCategoriesWrapper'>
             <div className='landingCategoriesCards'>
               <ScrollAnimation
-                animateIn='flipInX'
-                duration='0.3'
+                animateIn='fadeInUp'
+                duration={1.1}
+                offset={250}
                 className='animation'>
                 <Link
                   to='/products'
@@ -63,8 +64,9 @@ export const Landing: React.FC = () => {
                 </Link>
               </ScrollAnimation>
               <ScrollAnimation
-                animateIn='flipInX'
-                duration='0.3'
+                animateIn='fadeInUp'
+                duration={1.1}
+                offset={250}
                 className='animation'>
                 <Link
                   to='/products'
@@ -75,8 +77,9 @@ export const Landing: React.FC = () => {
                 </Link>
               </ScrollAnimation>
               <ScrollAnimation
-                animateIn='flipInX'
-                duration='0.3'
+                animateIn='fadeInUp'
+                duration={1.1}
+                offset={250}
                 className='animation'>
                 <Link
                   to='/products'
@@ -91,21 +94,33 @@ export const Landing: React.FC = () => {
         </div>
         {/* MOST SOLD ITEMS */}
         <div className='landingMostSold'>
-          <div className='landingMostSoldWrapper'>
-            <h2 className='landingMostSoldTitle title'>
-              NAJPRODAVANIJI PROIZVODI
-            </h2>
-            <div className='landingMostSoldProduct'>
-              {products.map((product: any) => {
-                return <ProductItem key={product._id} product={product} />;
-              })}
+          <ScrollAnimation
+            animateIn='fadeInLeft'
+            duration={1.1}
+            offset={250}
+            className='animation'>
+            <div className='landingMostSoldWrapper'>
+              <h2 className='landingMostSoldTitle title'>
+                NAJPRODAVANIJI PROIZVODI
+              </h2>
+              <div className='landingMostSoldProduct'>
+                {products.map((product: any) => {
+                  return <ProductItem key={product._id} product={product} />;
+                })}
+              </div>
             </div>
-          </div>
+          </ScrollAnimation>
         </div>
         <div className='landingRules'>
           <WaterDrops j={35} />
           <div className='landingRulesWrapper'>
-            <img src='./pike.png' alt='' className='landingRulesPike' />
+            <ScrollAnimation
+              animateIn='zoomInRight'
+              duration={0.55}
+              offset={250}
+              className='animationPike'>
+              <img src='./pike.png' alt='' className='landingRulesPike' />
+            </ScrollAnimation>
             <ul className='landingRulesList'>
               <h1 className='landingRulesTitle title'>
                 PRAVILA RIBOLOVA
@@ -176,10 +191,16 @@ export const Landing: React.FC = () => {
             </div>
             <div className='footerContact'>
               <h1 className='footerContactTitle'>KONTAKT</h1>
-              <h3 className='footerContactInfo'>Email: info@ribosport.com</h3>
-              <h3 className='footerContactInfo'>Tel: +387 61 408 106</h3>
               <h3 className='footerContactInfo'>
-                Adresa: 10. Septembar 58, Banovici, 75290
+                <span style={{ color: "#00c6bd" }}>Email:</span>{" "}
+                info@ribosport.com
+              </h3>
+              <h3 className='footerContactInfo'>
+                <span style={{ color: "#00c6bd" }}>Tel:</span> +387 61 408 106
+              </h3>
+              <h3 className='footerContactInfo'>
+                <span style={{ color: "#00c6bd" }}>Adresa:</span> 10. Septembar
+                58, Banovici, 75290
               </h3>
             </div>
 
@@ -187,7 +208,6 @@ export const Landing: React.FC = () => {
               <h1 className='footerLinksTitle'>LINKOVI</h1>
               <div className='footerLinksBottom'>
                 <Link className='footerLink' to=''>
-                  {/* <img src='./olx_logo.svg' alt='' className='footerLinkOlx' /> */}
                   <svg
                     id='Layer_1'
                     data-name='Layer 1'
