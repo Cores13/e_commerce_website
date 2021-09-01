@@ -62,3 +62,8 @@ td {
 .cartItemBorder {
   border: 1px solid lightgrey !important;
 }
+@media (max-width: 425px) {
+  td {
+    padding: 0 !important;
+  }
+}
